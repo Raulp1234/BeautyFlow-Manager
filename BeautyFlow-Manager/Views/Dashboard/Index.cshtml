@@ -1,0 +1,101 @@
+@model BeautyFlow_Manager.Models.Usuario
+@{
+    ViewData["Title"] = "Dashboard";
+    var userId = ViewBag.UserId as Guid? ?? Guid.Empty;
+    var userRole = ViewBag.UserRole as string ?? "Sin rol";
+    var userName = ViewBag.UserName as string ?? "Usuario";
+    var userEmail = ViewBag.UserEmail as string ?? "";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2>@ViewData["Title"]</h2>
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Información de Sesión</h4>
+                </div>
+                <div class="card-body">
+                    <p><strong>Bienvenido:</strong> @userName</p>
+                    <p><strong>Email:</strong> @userEmail</p>
+                    <p><strong>Tu rol es:</strong> <span class="badge bg-info">@userRole</span></p>
+                    <p><strong>Tu ID único (GUID):</strong> <code>@userId.ToString()</code></p>
+                    <p><strong>ID corto:</strong> <code>@userId.ToString().Substring(0, 8)</code></p>
+                    <p><strong>Fecha/Hora:</strong> @DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">Acciones Rápidas</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-controller="Account" asp-action="Logout" method="post" class="d-grid">
+                        <button type="submit" class="btn btn-outline-danger">Cerrar Sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (userRole == "Manager")
+    {
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Panel de Manager</h4>
+                    <p>Tienes acceso completo a todas las funcionalidades del sistema.</p>
+                    <hr>
+                    <p class="mb-0">Puedes gestionar usuarios, roles, salones y configuraciones globales.</p>
+                </div>
+            </div>
+        </div>
+    }
+    else if (userRole == "Salon")
+    {
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="alert alert-info" role="alert">
+                    <h4 class="alert-heading">Panel de Salón</h4>
+                    <p>Eres el dueño/administrador de un salón.</p>
+                    <hr>
+                    <p class="mb-0">Puedes gestionar tus trabajadores, citas y servicios del salón.</p>
+                </div>
+            </div>
+        </div>
+    }
+    else if (userRole == "Trabajador")
+    {
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="alert alert-warning" role="alert">
+                    <h4 class="alert-heading">Panel de Trabajador</h4>
+                    <p>Eres un empleado del salón.</p>
+                    <hr>
+                    <p class="mb-0">Puedes ver tu agenda, gestionar citas y actualizar tu perfil.</p>
+                </div>
+            </div>
+        </div>
+    }
+    else if (userRole == "Cliente")
+    {
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="alert alert-secondary" role="alert">
+                    <h4 class="alert-heading">Panel de Cliente</h4>
+                    <p>Eres un cliente registrado.</p>
+                    <hr>
+                    <p class="mb-0">Puedes agendar citas, ver el historial de servicios y más.</p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

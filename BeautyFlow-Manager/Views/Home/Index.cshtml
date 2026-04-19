@@ -1,8 +1,61 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mt-5">
+    <h1 class="display-4"><i class="bi bi-scissors"></i> Bienvenido a BeautyFlow Manager</h1>
+    <p class="lead">Sistema de gestión para salones de belleza</p>
+    <hr class="my-4" />
+    
+    @if (!User.Identity!.IsAuthenticated)
+    {
+        <p>Comienza ahora gestionando tu salón de belleza de manera eficiente.</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <a asp-controller="Account" asp-action="Register" class="btn btn-success btn-lg me-md-2">
+                <i class="bi bi-person-plus"></i> Registrarse
+            </a>
+            <a asp-controller="Account" asp-action="Login" class="btn btn-primary btn-lg">
+                <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+            </a>
+        </div>
+    }
+    else
+    {
+        <p>¡Hola @User.Identity.Name! Bienvenido de nuevo.</p>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+            <a asp-controller="Dashboard" asp-action="Index" class="btn btn-primary btn-lg">
+                <i class="bi bi-speedometer2"></i> Ir al Dashboard
+            </a>
+        </div>
+    }
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="bi bi-calendar-check text-primary" style="font-size: 3rem;"></i>
+                <h5 class="card-title mt-3">Gestión de Citas</h5>
+                <p class="card-text">Administra todas tus citas de manera eficiente y organizada.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="bi bi-people text-success" style="font-size: 3rem;"></i>
+                <h5 class="card-title mt-3">Control de Personal</h5>
+                <p class="card-text">Gestiona tu equipo de trabajadores y sus horarios.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100">
+            <div class="card-body text-center">
+                <i class="bi bi-graph-up text-warning" style="font-size: 3rem;"></i>
+                <h5 class="card-title mt-3">Reportes</h5>
+                <p class="card-text">Obtén estadísticas y reportes del rendimiento de tu salón.</p>
+            </div>
+        </div>
+    </div>
 </div>
