@@ -1,0 +1,78 @@
+@model BeautyFlow_Manager.Models.ViewModels.LoginViewModel
+@{
+    ViewData["Title"] = "Iniciar Sesión";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0 text-center">@ViewData["Title"]</h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info" role="alert">
+                        <h5 class="alert-heading">Credenciales de prueba:</h5>
+                        <hr>
+                        <p class="mb-1"><strong>Admin (Manager):</strong></p>
+                        <ul class="mb-2">
+                            <li>Email: admin@beautyflow.com</li>
+                            <li>Password: Admin123!</li>
+                        </ul>
+                        <p class="mb-1"><strong>Salon:</strong></p>
+                        <ul class="mb-2">
+                            <li>Email: salon@beautyflow.com</li>
+                            <li>Password: Salon123!</li>
+                        </ul>
+                        <p class="mb-1"><strong>Trabajador:</strong></p>
+                        <ul class="mb-2">
+                            <li>Email: trabajador@beautyflow.com</li>
+                            <li>Password: Trabajador123!</li>
+                        </ul>
+                        <p class="mb-0"><strong>Cliente:</strong></p>
+                        <ul class="mb-0">
+                            <li>Email: cliente@beautyflow.com</li>
+                            <li>Password: Cliente123!</li>
+                        </ul>
+                    </div>
+
+                    <form asp-action="Login" method="post">
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" class="form-control" placeholder="ejemplo@correo.com" />
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Password" class="form-label"></label>
+                            <input asp-for="Password" type="password" class="form-control" />
+                            <span asp-validation-for="Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3 form-check">
+                            <input asp-for="RememberMe" class="form-check-input" />
+                            <label asp-for="RememberMe" class="form-check-label"></label>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary btn-lg">Iniciar Sesión</button>
+                        </div>
+                    </form>
+
+                    <hr class="my-4" />
+
+                    <div class="text-center">
+                        <p class="mb-0">¿No tienes una cuenta?</p>
+                        <a asp-action="Register" class="btn btn-outline-success mt-2">Registrarse</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
