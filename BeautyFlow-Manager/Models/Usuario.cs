@@ -10,5 +10,6 @@ namespace BeautyFlow_Manager.Models
         public DateTime FechaRegistro { get; set; } = DateTime.UtcNow;
         public Guid RolId { get; set; }
         public bool Activo { get; set; } = true;
+        public string? FotoUrl { get; set; }
     }
 }

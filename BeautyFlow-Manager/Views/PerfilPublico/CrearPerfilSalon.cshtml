@@ -1,29 +1,87 @@
+@model BeautyFlow_Manager.Controllers.SalonViewModel
 @{
     ViewData["Title"] = "Crear Perfil de Salón";
 }
 
 <div class="container mt-5">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
             <div class="card shadow">
                 <div class="card-header bg-primary text-white">
-                    <h3 class="mb-0 text-center">@ViewData["Title"]</h3>
+                    <h3 class="mb-0 text-center"><i class="bi bi-shop"></i> @ViewData["Title"]</h3>
                 </div>
                 <div class="card-body">
                     <div class="alert alert-info" role="alert">
                         <i class="bi bi-info-circle"></i> 
-                        Aquí podrás registrar la información de tu salón de belleza.
+                        Completa el formulario para registrar tu salón de belleza. Una vez registrado, podrás gestionar tus trabajadores, citas y servicios.
                     </div>
                     
-                    <p class="text-center">Formulario de registro de salón en construcción...</p>
-                    
-                    <div class="text-center mt-4">
-                        <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-secondary">
-                            <i class="bi bi-arrow-left"></i> Volver al Dashboard
-                        </a>
-                    </div>
+                    <form asp-action="CrearPerfilSalon" method="post">
+                        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+                        
+                        <h5 class="text-primary mb-3">Información Básica del Salón</h5>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label asp-for="NombreSalon" class="form-label"></label>
+                                <input asp-for="NombreSalon" class="form-control" placeholder="Ej: Belleza & Estilo" />
+                                <span asp-validation-for="NombreSalon" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="NitRuc" class="form-label"></label>
+                                <input asp-for="NitRuc" class="form-control" placeholder="Ej: 20123456789" />
+                                <span asp-validation-for="NitRuc" class="text-danger"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Direccion" class="form-label"></label>
+                            <input asp-for="Direccion" class="form-control" placeholder="Dirección completa del salón" />
+                            <span asp-validation-for="Direccion" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label asp-for="Telefono" class="form-label"></label>
+                                <input asp-for="Telefono" class="form-control" placeholder="Ej: +51 987 654 321" />
+                                <span asp-validation-for="Telefono" class="text-danger"></span>
+                            </div>
+                            <div class="col-md-6">
+                                <label asp-for="Email" class="form-label"></label>
+                                <input asp-for="Email" class="form-control" placeholder="Email de contacto del salón" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Descripcion" class="form-label"></label>
+                            <textarea asp-for="Descripcion" class="form-control" rows="3" placeholder="Describe tu salón, especialidades, ambiente, etc."></textarea>
+                            <span asp-validation-for="Descripcion" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="HorarioAtencion" class="form-label"></label>
+                            <input asp-for="HorarioAtencion" class="form-control" placeholder="Ej: Lunes a Sábado 9:00 AM - 8:00 PM" />
+                            <span asp-validation-for="HorarioAtencion" class="text-danger"></span>
+                        </div>
+                        
+                        <hr class="my-4">
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-secondary me-md-2">
+                                <i class="bi bi-x-circle"></i> Cancelar
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-check-circle"></i> Registrar Salón
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
