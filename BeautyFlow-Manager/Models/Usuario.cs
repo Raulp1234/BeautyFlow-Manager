@@ -4,7 +4,6 @@ namespace BeautyFlow_Manager.Models
 {
     public class Usuario : IdentityUser<Guid>
     {
-        public Guid Id { get; set; }
         public string NombreCompleto { get; set; } = string.Empty;
         public string? Telefono { get; set; }
         public DateTime FechaRegistro { get; set; } = DateTime.UtcNow;

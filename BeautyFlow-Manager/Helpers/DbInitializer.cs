@@ -13,9 +13,6 @@ namespace BeautyFlow_Manager.Helpers
         public static readonly Guid TrabajadorRoleId = Guid.Parse("33333333-3333-3333-3333-333333333333");
         public static readonly Guid ClienteRoleId = Guid.Parse("44444444-4444-4444-4444-444444444444");
 
-        // Usuario admin
-        public static readonly Guid AdminUserId = Guid.Parse("aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa");
-
         public static async Task InitializeAsync(IServiceProvider serviceProvider)
         {
             var context = serviceProvider.GetRequiredService<ApplicationDbContext>();
@@ -76,7 +73,7 @@ namespace BeautyFlow_Manager.Helpers
             {
                 var admin = new Usuario
                 {
-                    Id = AdminUserId,
+                    Id = Guid.NewGuid(),
                     UserName = adminEmail,
                     Email = adminEmail,
                     NombreCompleto = "Administrador Principal",

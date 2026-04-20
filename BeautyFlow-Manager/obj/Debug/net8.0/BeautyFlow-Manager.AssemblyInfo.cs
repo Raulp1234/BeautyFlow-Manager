@@ -11,10 +11,11 @@
 using System;
 using System.Reflection;
 
+[assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("BeautyFlow-Manager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9bc1fdea7357206f021092f17998ca25d89ce257")]
 [assembly: System.Reflection.AssemblyProductAttribute("BeautyFlow-Manager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BeautyFlow-Manager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
