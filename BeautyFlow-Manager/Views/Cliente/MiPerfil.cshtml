@@ -1,0 +1,89 @@
+@model BeautyFlow_Manager.Controllers.ClientePerfilViewModel
+@{
+    ViewData["Title"] = "Mi Perfil";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0 text-center"><i class="bi bi-person-circle"></i> @ViewData["Title"]</h3>
+                </div>
+                <div class="card-body">
+                    @if (TempData["Success"] != null)
+                    {
+                        <div class="alert alert-success alert-dismissible fade show" role="alert">
+                            <i class="bi bi-check-circle"></i> @TempData["Success"]
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                    }
+
+                    <form asp-action="MiPerfil" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="All" class="text-danger mb-3"></div>
+                        
+                        <div class="text-center mb-4">
+                            <div class="mb-3">
+                                @if (!string.IsNullOrEmpty(Model.FotoUrl))
+                                {
+                                    <img src="@Model.FotoUrl" alt="Foto de perfil" class="rounded-circle" width="150" height="150" style="object-fit: cover;" />
+                                }
+                                else
+                                {
+                                    <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 150px; height: 150px;">
+                                        <i class="bi bi-person-fill" style="font-size: 4rem; color: #ccc;"></i>
+                                    </div>
+                                }
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="FotoFile" class="form-label">
+                                    <i class="bi bi-camera"></i> Cambiar Foto de Perfil
+                                </label>
+                                <input type="file" class="form-control" id="FotoFile" name="FotoFile" accept="image/*" />
+                                <small class="text-muted">Formatos aceptados: JPG, PNG, GIF. Máximo 2MB.</small>
+                            </div>
+                        </div>
+                        
+                        <hr class="my-4">
+                        
+                        <h5 class="text-primary mb-3">Información Personal</h5>
+                        
+                        <div class="mb-3">
+                            <label asp-for="NombreCompleto" class="form-label"></label>
+                            <input asp-for="NombreCompleto" class="form-control" placeholder="Tu nombre completo" />
+                            <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Email" class="form-label"></label>
+                            <input asp-for="Email" class="form-control" disabled />
+                            <small class="text-muted">El email no se puede modificar</small>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label asp-for="Telefono" class="form-label"></label>
+                            <input asp-for="Telefono" class="form-control" placeholder="Tu número de teléfono" />
+                            <span asp-validation-for="Telefono" class="text-danger"></span>
+                        </div>
+                        
+                        <hr class="my-4">
+                        
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-secondary me-md-2">
+                                <i class="bi bi-arrow-left"></i> Volver
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-save"></i> Guardar Cambios
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
