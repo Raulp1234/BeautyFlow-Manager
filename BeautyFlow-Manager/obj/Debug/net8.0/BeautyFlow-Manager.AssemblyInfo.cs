@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BeautyFlow-Manager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9bc1fdea7357206f021092f17998ca25d89ce257")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a83015d7ca0a5e2dcdaa01b802d100856020b03a")]
 [assembly: System.Reflection.AssemblyProductAttribute("BeautyFlow-Manager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BeautyFlow-Manager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using BeautyFlow_Manager.Models;
 using System.Security.Claims;
+using System.ComponentModel.DataAnnotations;
 
 namespace BeautyFlow_Manager.Controllers
 {

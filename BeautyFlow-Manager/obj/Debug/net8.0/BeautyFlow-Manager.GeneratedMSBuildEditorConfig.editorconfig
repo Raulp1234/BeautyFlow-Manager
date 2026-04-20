@@ -46,6 +46,18 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/PerfilPublico/CrearPerfil.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsUHVibGljb1xDcmVhclBlcmZpbC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/PerfilPublico/CrearPerfilSalon.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsUHVibGljb1xDcmVhclBlcmZpbFNhbG9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/PerfilPublico/CrearPerfilTrabajador.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsUHVibGljb1xDcmVhclBlcmZpbFRyYWJhamFkb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
