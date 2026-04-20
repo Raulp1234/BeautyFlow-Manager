@@ -1,0 +1,29 @@
+@{
+    ViewData["Title"] = "Crear Perfil de Salón";
+}
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h3 class="mb-0 text-center">@ViewData["Title"]</h3>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info" role="alert">
+                        <i class="bi bi-info-circle"></i> 
+                        Aquí podrás registrar la información de tu salón de belleza.
+                    </div>
+                    
+                    <p class="text-center">Formulario de registro de salón en construcción...</p>
+                    
+                    <div class="text-center mt-4">
+                        <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-secondary">
+                            <i class="bi bi-arrow-left"></i> Volver al Dashboard
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

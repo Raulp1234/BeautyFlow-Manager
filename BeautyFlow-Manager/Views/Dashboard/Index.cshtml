@@ -38,6 +38,14 @@
                     <h4 class="mb-0">Acciones Rápidas</h4>
                 </div>
                 <div class="card-body">
+                    @if (userRole == "Cliente")
+                    {
+                        <div class="d-grid gap-2 mb-3">
+                            <a asp-controller="PerfilPublico" asp-action="CrearPerfil" class="btn btn-primary">
+                                <i class="bi bi-briefcase"></i> Trabaja con Nosotros
+                            </a>
+                        </div>
+                    }
                     <form asp-controller="Account" asp-action="Logout" method="post" class="d-grid">
                         <button type="submit" class="btn btn-outline-danger">Cerrar Sesión</button>
                     </form>

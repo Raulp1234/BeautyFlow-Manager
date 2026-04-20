@@ -32,13 +32,8 @@
                             <span asp-validation-for="Telefono" class="text-danger"></span>
                         </div>
 
-                        <div class="mb-3">
-                            <label asp-for="RolSeleccionado" class="form-label"></label>
-                            <select asp-for="RolSeleccionado" asp-items="Model.RolesDisponibles" class="form-select">
-                                <option value="">-- Seleccione un rol --</option>
-                            </select>
-                            <span asp-validation-for="RolSeleccionado" class="text-danger"></span>
-                        </div>
+                        <!-- Campo oculto para el rol Cliente (automático) -->
+                        <input type="hidden" asp-for="RolSeleccionado" />
 
                         <div class="mb-3">
                             <label asp-for="Password" class="form-label"></label>
@@ -52,8 +47,12 @@
                             <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
                         </div>
 
+                        <div class="alert alert-info" role="alert">
+                            <i class="bi bi-info-circle"></i> Al registrarte, obtendrás automáticamente el rol de <strong>Cliente</strong>.
+                        </div>
+
                         <div class="d-grid gap-2">
-                            <button type="submit" class="btn btn-success btn-lg">Registrarse</button>
+                            <button type="submit" class="btn btn-success btn-lg">Registrarse como Cliente</button>
                         </div>
                     </form>
 

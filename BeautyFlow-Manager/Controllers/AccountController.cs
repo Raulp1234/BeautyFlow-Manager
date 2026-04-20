@@ -81,15 +81,16 @@ namespace BeautyFlow_Manager.Controllers
         [HttpGet]
         public async Task<IActionResult> Register()
         {
-            var roles = await _rolService.ObtenerTodosAsync();
-            var viewModel = new RegisterViewModel
+            // Obtener solo el rol Cliente para asignación automática
+            var clienteRole = await _rolService.ObtenerPorNombreAsync("Cliente");
+            var viewModel = new RegisterViewModel();
+            
+            if (clienteRole != null)
             {
-                RolesDisponibles = roles.Select(r => new SelectListItem
-                {
-                    Value = r.Id.ToString(),
-                    Text = r.Nombre
-                }).ToList()
-            };
+                // Establecer el rol Cliente por defecto (oculto)
+                viewModel.RolSeleccionado = clienteRole.Id;
+            }
+            
             return View(viewModel);
         }
 
@@ -99,6 +100,14 @@ namespace BeautyFlow_Manager.Controllers
         {
             if (ModelState.IsValid)
             {
+                // Forzar que el rol sea siempre Cliente en el registro público
+                var clienteRole = await _rolService.ObtenerPorNombreAsync("Cliente");
+                if (clienteRole == null)
+                {
+                    ModelState.AddModelError(string.Empty, "Error: No se encontró el rol Cliente. Contacte al administrador.");
+                    return View(model);
+                }
+
                 var user = new Usuario
                 {
                     Id = Guid.NewGuid(),
@@ -108,18 +117,14 @@ namespace BeautyFlow_Manager.Controllers
                     Telefono = model.Telefono,
                     FechaRegistro = DateTime.UtcNow,
                     Activo = true,
-                    RolId = model.RolSeleccionado
+                    RolId = clienteRole.Id  // Siempre asignar rol Cliente
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    // Asignar rol seleccionado
-                    var rol = await _rolService.ObtenerPorIdAsync(model.RolSeleccionado);
-                    if (rol != null)
-                    {
-                        await _userManager.AddToRoleAsync(user, rol.Nombre);
-                    }
+                    // Asignar rol Cliente
+                    await _userManager.AddToRoleAsync(user, "Cliente");
 
                     _logger.LogInformation("Usuario creado: {Email}", user.Email);
                     
@@ -134,14 +139,6 @@ namespace BeautyFlow_Manager.Controllers
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
-
-            // Recargar roles si hay error
-            var roles = await _rolService.ObtenerTodosAsync();
-            model.RolesDisponibles = roles.Select(r => new SelectListItem
-            {
-                Value = r.Id.ToString(),
-                Text = r.Nombre
-            }).ToList();
 
             return View(model);
         }
