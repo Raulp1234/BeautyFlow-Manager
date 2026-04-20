@@ -149,7 +149,6 @@ namespace BeautyFlow_Manager.Controllers
         [Display(Name = "Teléfono")]
         public string Telefono { get; set; } = string.Empty;
 
-        [EmailAddress(ErrorMessage = "Ingrese un email válido")]
         [Display(Name = "Email")]
         public string Email { get; set; } = string.Empty;
 

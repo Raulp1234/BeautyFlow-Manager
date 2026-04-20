@@ -86,4 +86,34 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+        // Previsualización de imagen de perfil
+        document.getElementById('FotoFile').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const imgContainer = document.querySelector('.text-center.mb-4');
+                    const existingImg = imgContainer.querySelector('img.rounded-circle');
+                    const existingPlaceholder = imgContainer.querySelector('.bg-light.rounded-circle');
+                    
+                    if (existingImg) {
+                        existingImg.src = e.target.result;
+                        existingImg.style.display = 'block';
+                    } else if (existingPlaceholder) {
+                        const newImg = document.createElement('img');
+                        newImg.src = e.target.result;
+                        newImg.alt = 'Vista previa';
+                        newImg.className = 'rounded-circle';
+                        newImg.style.width = '150px';
+                        newImg.style.height = '150px';
+                        newImg.style.objectFit = 'cover';
+                        existingPlaceholder.replaceWith(newImg);
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
 }

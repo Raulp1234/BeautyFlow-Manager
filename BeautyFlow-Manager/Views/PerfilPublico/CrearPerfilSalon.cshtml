@@ -28,8 +28,12 @@
                                 <span asp-validation-for="NombreSalon" class="text-danger"></span>
                             </div>
                             <div class="col-md-6">
-                                <label asp-for="NitRuc" class="form-label"></label>
+                                <label asp-for="NitRuc" class="form-label">
+                                    NIT/RUC 
+                                    <i class="bi bi-question-circle text-muted" data-bs-toggle="tooltip" title="Número de Identificación Tributaria (NIT) o Registro Único de Contribuyente (RUC). Es el número fiscal de tu negocio."></i>
+                                </label>
                                 <input asp-for="NitRuc" class="form-control" placeholder="Ej: 20123456789" />
+                                <small class="text-muted">Número fiscal de identificación de tu negocio</small>
                                 <span asp-validation-for="NitRuc" class="text-danger"></span>
                             </div>
                         </div>
@@ -84,4 +88,12 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    
+    <script>
+        // Inicializar tooltips de Bootstrap
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    </script>
 }
