@@ -44,6 +44,17 @@
                             <a asp-controller="PerfilPublico" asp-action="CrearPerfil" class="btn btn-primary">
                                 <i class="bi bi-briefcase"></i> Trabaja con Nosotros
                             </a>
+                            <a asp-controller="Cliente" asp-action="MiPerfil" class="btn btn-outline-info">
+                                <i class="bi bi-person-gear"></i> Editar Mi Perfil
+                            </a>
+                        </div>
+                    }
+                    else if (userRole == "Salon" || userRole == "Trabajador")
+                    {
+                        <div class="d-grid gap-2 mb-3">
+                            <a asp-controller="Cliente" asp-action="MiPerfil" class="btn btn-outline-info">
+                                <i class="bi bi-person-gear"></i> Editar Mi Perfil
+                            </a>
                         </div>
                     }
                     <form asp-controller="Account" asp-action="Logout" method="post" class="d-grid">
