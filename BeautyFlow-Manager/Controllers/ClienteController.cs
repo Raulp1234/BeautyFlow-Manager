@@ -5,6 +5,7 @@ using BeautyFlow_Manager.Models;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using System.ComponentModel.DataAnnotations;
 
 namespace BeautyFlow_Manager.Controllers
 {

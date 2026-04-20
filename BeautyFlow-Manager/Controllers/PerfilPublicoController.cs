@@ -5,6 +5,8 @@ using BeautyFlow_Manager.Models;
 using BeautyFlow_Manager.Data;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BeautyFlow_Manager.Controllers
 {

@@ -3,12 +3,20 @@
   "WorkspaceRootPath": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\beautyflow-manager\\helpers\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|solutionrelative:helpers\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\beautyflow-manager\\models\\trabajadorindependiente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|solutionrelative:models\\trabajadorindependiente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\beautyflow-manager\\controllers\\perfilpublicocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|solutionrelative:controllers\\perfilpublicocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\beautyflow-manager\\helpers\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|solutionrelative:helpers\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\beautyflow-manager\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|solutionrelative:controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\beautyflow-manager\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 34,
+          "SelectedChildIndex": 39,
           "Children": [
             {
               "$type": "Bookmark",
@@ -174,20 +182,46 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "TrabajadorIndependiente.cs",
+              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\TrabajadorIndependiente.cs",
+              "RelativeDocumentMoniker": "Models\\TrabajadorIndependiente.cs",
+              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\TrabajadorIndependiente.cs",
+              "RelativeToolTip": "Models\\TrabajadorIndependiente.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAcwDIAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T03:34:14.967Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ClienteController.cs",
+              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\ClienteController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ClienteController.cs",
+              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\ClienteController.cs",
+              "RelativeToolTip": "Controllers\\ClienteController.cs",
+              "ViewState": "AQIAAIAAAAAAAAAAAAAcwJEAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T03:34:05.509Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "PerfilPublicoController.cs",
               "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\PerfilPublicoController.cs",
               "RelativeDocumentMoniker": "Controllers\\PerfilPublicoController.cs",
-              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\PerfilPublicoController.cs*",
-              "RelativeToolTip": "Controllers\\PerfilPublicoController.cs*",
-              "ViewState": "AQIAAFkAAAAAAAAAAAAcwGoAAAARAAAA",
+              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\PerfilPublicoController.cs",
+              "RelativeToolTip": "Controllers\\PerfilPublicoController.cs",
+              "ViewState": "AQIAAEcBAAAAAAAAAADwv1UBAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-20T03:15:34.302Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "AccountController.cs",
               "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
@@ -195,12 +229,11 @@
               "RelativeToolTip": "Controllers\\AccountController.cs",
               "ViewState": "AQIAAEYAAAAAAAAAAAAcwFcAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T03:03:21.419Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-20T03:03:21.419Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "RegisterViewModel.cs",
               "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\ViewModels\\RegisterViewModel.cs",
               "RelativeDocumentMoniker": "Models\\ViewModels\\RegisterViewModel.cs",
@@ -212,20 +245,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "DbInitializer.cs",
               "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Helpers\\DbInitializer.cs",
               "RelativeDocumentMoniker": "Helpers\\DbInitializer.cs",
               "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Helpers\\DbInitializer.cs",
               "RelativeToolTip": "Helpers\\DbInitializer.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAEsAAAAnAAAA",
+              "ViewState": "AQIAADQAAAAAAAAAAAAEwEUAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-20T03:00:55.908Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "ErrorViewModel.cs",
               "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
@@ -237,7 +270,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Rol.cs",
               "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\Rol.cs",
               "RelativeDocumentMoniker": "Models\\Rol.cs",
