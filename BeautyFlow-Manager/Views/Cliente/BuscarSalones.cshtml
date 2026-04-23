@@ -1,0 +1,126 @@
+@model BeautyFlow_Manager.Models.ViewModels.ReservaViewModel
+@{
+    ViewData["Title"] = "Buscar Salones";
+}
+
+<div class="container-fluid py-4">
+    <!-- Encabezado y Búsqueda -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2><i class="fas fa-search me-2"></i>Buscar Salones y Servicios</h2>
+        </div>
+    </div>
+
+    <!-- Filtros de Búsqueda -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <form method="get" asp-action="BuscarSalones">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label">Ubicación</label>
+                        <input type="text" name="ubicacion" class="form-control" placeholder="Ciudad o zona..." value="@Context.Request.Query["ubicacion"]" />
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Servicio</label>
+                        <select name="servicio" class="form-select">
+                            <option value="">Todos los servicios</option>
+                            <option value="Corte de Cabello">Corte de Cabello</option>
+                            <option value="Manicure">Manicure</option>
+                            <option value="Maquillaje">Maquillaje</option>
+                            <option value="Tinte">Tinte</option>
+                            <option value="Peinado">Peinado</option>
+                            <option value="Barbería">Barbería</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Fecha</label>
+                        <input type="date" name="fecha" class="form-control" value="@Context.Request.Query["fecha"]" min="@DateTime.Now.ToString("yyyy-MM-dd")" />
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button type="submit" class="btn btn-primary w-100">
+                            <i class="fas fa-search me-1"></i>Buscar
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Resultados -->
+    <div class="row">
+        @if (Model.Salones != null && Model.Salones.Any())
+        {
+            @foreach (var salon in Model.Salones)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card h-100">
+                        @if (!string.IsNullOrEmpty(salon.LogoUrl))
+                        {
+                            <img src="@salon.LogoUrl" class="card-img-top" alt="@salon.NombreSalon" style="height: 200px; object-fit: cover;">
+                        }
+                        else
+                        {
+                            <div class="bg-primary text-white d-flex align-items-center justify-content-center" style="height: 200px;">
+                                <i class="fas fa-store fa-4x"></i>
+                            </div>
+                        }
+                        
+                        <div class="card-body">
+                            <h5 class="card-title">@salon.NombreSalon</h5>
+                            <p class="card-text text-muted">
+                                <i class="fas fa-map-marker-alt me-1"></i>@salon.Direccion
+                            </p>
+                            
+                            @if (!string.IsNullOrEmpty(salon.Descripcion))
+                            {
+                                <p class="card-text small">@salon.Descripcion.Substring(0, Math.Min(100, salon.Descripcion.Length))...</p>
+                            }
+                            
+                            <div class="mb-3">
+                                @{
+                                    var serviciosCount = salon.Servicios?.Count() ?? 0;
+                                    var trabajadoresCount = salon.Servicios?.SelectMany(s => s.Trabajadores ?? new List<BeautyFlow_Manager.Models.ServicioTrabajador>()).DistinctBy(t => t.TrabajadorId).Count() ?? 0;
+                                }
+                                <span class="badge bg-info me-1">@serviciosCount servicios</span>
+                                <span class="badge bg-secondary">@trabajadoresCount @(trabajadoresCount == 1 ? "trabajador" : "trabajadores")</span>
+                            </div>
+                            
+                            <!-- Servicios destacados -->
+                            @if (salon.Servicios != null && salon.Servicios.Any())
+                            {
+                                <div class="mb-3">
+                                    <small class="text-muted fw-bold">Servicios populares:</small>
+                                    <ul class="list-unstyled small mb-0 mt-1">
+                                        @foreach (var servicio in salon.Servicios.Take(3))
+                                        {
+                                            <li>
+                                                <i class="fas fa-check text-success me-1"></i>
+                                                @servicio.Nombre - <strong>$@servicio.Costo.ToString("F2")</strong>
+                                            </li>
+                                        }
+                                    </ul>
+                                </div>
+                            }
+                        </div>
+                        
+                        <div class="card-footer bg-white">
+                            <a asp-action="VerSalon" asp-route-id="@salon.Id" class="btn btn-primary w-100">
+                                <i class="fas fa-calendar-alt me-1"></i>Ver Servicios y Reservar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="col-12">
+                <div class="text-center py-5">
+                    <i class="fas fa-store-slash fa-4x text-muted mb-3"></i>
+                    <h4>No se encontraron salones</h4>
+                    <p class="text-muted">Intenta ajustar los filtros de búsqueda</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>

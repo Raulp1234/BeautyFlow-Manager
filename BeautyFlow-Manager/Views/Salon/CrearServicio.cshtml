@@ -1,0 +1,141 @@
+@model BeautyFlow_Manager.Models.Servicio
+@{
+    ViewData["Title"] = "Crear Servicio";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header bg-white">
+                    <h4 class="mb-0"><i class="fas fa-plus-circle me-2"></i>Crear Nuevo Servicio</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="CrearServicio" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="row">
+                            <!-- Columna Izquierda -->
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="Nombre" class="form-label">Nombre del Servicio *</label>
+                                    <input asp-for="Nombre" class="form-control" placeholder="Ej: Corte de Cabello" />
+                                    <span asp-validation-for="Nombre" class="text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="Categoria" class="form-label">Categoría</label>
+                                    <select asp-for="Categoria" class="form-select">
+                                        <option value="">Seleccionar categoría...</option>
+                                        <option value="Peluquería">Peluquería</option>
+                                        <option value="Manicure">Manicure</option>
+                                        <option value="Pedicure">Pedicure</option>
+                                        <option value="Maquillaje">Maquillaje</option>
+                                        <option value="Tinte">Tinte</option>
+                                        <option value="Peinado">Peinado</option>
+                                        <option value="Tratamientos">Tratamientos</option>
+                                        <option value="Barbería">Barbería</option>
+                                        <option value="Otros">Otros</option>
+                                    </select>
+                                    <span asp-validation-for="Categoria" class="text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="DuracionMinutos" class="form-label">Duración (minutos) *</label>
+                                    <input asp-for="DuracionMinutos" type="number" class="form-control" min="15" step="15" placeholder="Ej: 60" />
+                                    <span asp-validation-for="DuracionMinutos" class="text-danger"></span>
+                                    <small class="form-text text-muted">Recomendado: múltiplos de 15 minutos</small>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="Costo" class="form-label">Costo ($) *</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text">$</span>
+                                        <input asp-for="Costo" type="number" class="form-control" min="0" step="0.01" placeholder="0.00" />
+                                    </div>
+                                    <span asp-validation-for="Costo" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <!-- Columna Derecha -->
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label asp-for="Descripcion" class="form-label">Descripción</label>
+                                    <textarea asp-for="Descripcion" class="form-control" rows="4" placeholder="Describe el servicio en detalle..."></textarea>
+                                    <span asp-validation-for="Descripcion" class="text-danger"></span>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label asp-for="DiasAntelacionRequerida" class="form-label">Días de antelación requeridos</label>
+                                    <input asp-for="DiasAntelacionRequerida" type="number" class="form-control" min="0" placeholder="Ej: 1" />
+                                    <span asp-validation-for="DiasAntelacionRequerida" class="text-danger"></span>
+                                    <small class="form-text text-muted">Mínimo de días que un cliente debe reservar con anticipación</small>
+                                </div>
+
+                                <div class="mb-3">
+                                    <label class="form-label">Imagen del servicio</label>
+                                    <input type="file" name="imagen" class="form-control" accept="image/*" />
+                                    <small class="form-text text-muted">Formatos: JPG, PNG. Tamaño máximo: 2MB</small>
+                                </div>
+
+                                <div class="mb-3 form-check">
+                                    <input asp-for="Activo" type="checkbox" class="form-check-input" checked />
+                                    <label asp-for="Activo" class="form-check-label">Servicio activo</label>
+                                    <small class="form-text text-muted d-block">Si está desactivado, no será visible para los clientes</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr class="my-4" />
+
+                        <!-- Asignación de Trabajadores -->
+                        <div class="mb-4">
+                            <h5><i class="fas fa-users me-2"></i>Trabajadores que ofrecen este servicio</h5>
+                            <p class="text-muted small">Puedes asignar trabajadores ahora o hacerlo más tarde</p>
+                            
+                            <div id="trabajadoresContainer" class="row">
+                                @if (ViewBag.TrabajadoresDisponibles != null && ((List<BeautyFlow_Manager.Models.TrabajadorIndependiente>)ViewBag.TrabajadoresDisponibles).Any())
+                                {
+                                    foreach (var trabajador in (List<BeautyFlow_Manager.Models.TrabajadorIndependiente>)ViewBag.TrabajadoresDisponibles)
+                                    {
+                                        <div class="col-md-6 mb-2">
+                                            <div class="form-check border rounded p-2">
+                                                <input type="checkbox" name="trabajadorIds" value="@trabajador.Id" class="form-check-input" id="trab_@trabajador.Id" />
+                                                <label class="form-check-label" for="trab_@trabajador.Id">
+                                                    <strong>@trabajador.NombreCompleto</strong>
+                                                    <br><small class="text-muted">@trabajador.EspecialidadPrincipal</small>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="col-12">
+                                        <div class="alert alert-warning">
+                                            <i class="fas fa-exclamation-triangle me-2"></i>
+                                            No hay trabajadores disponibles. Primero debes contratar trabajadores para tu salón.
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="fas fa-save me-1"></i>Guardar Servicio
+                            </button>
+                            <a asp-action="Servicios" class="btn btn-outline-secondary">
+                                <i class="fas fa-times me-1"></i>Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<partial name="_ValidationScriptsPartial" />
+}

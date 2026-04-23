@@ -1,0 +1,298 @@
+@model BeautyFlow_Manager.Models.ViewModels.SalonDetalleViewModel
+@{
+    ViewData["Title"] = "Detalle del Salón";
+}
+
+<div class="container-fluid py-4">
+    <!-- Encabezado con navegación -->
+    <div class="row mb-4">
+        <div class="col-12">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a asp-action="Salones">Salones</a></li>
+                    <li class="breadcrumb-item active">@Model.Salon.NombreSalon</li>
+                </ol>
+            </nav>
+            <div class="d-flex justify-content-between align-items-center">
+                <h2><i class="fas fa-store me-2"></i>@Model.Salon.NombreSalon</h2>
+                <div>
+                    <a asp-action="EditarSalon" asp-route-id="@Model.Salon.Id" class="btn btn-primary">
+                        <i class="fas fa-edit me-1"></i>Editar
+                    </a>
+                    <a asp-action="Salones" class="btn btn-outline-secondary">
+                        <i class="fas fa-arrow-left me-1"></i>Volver
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Información Principal -->
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0">Información del Salón</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4 text-center mb-3">
+                            @if (!string.IsNullOrEmpty(Model.Salon.LogoUrl))
+                            {
+                                <img src="@Model.Salon.LogoUrl" alt="@Model.Salon.NombreSalon" class="img-fluid rounded" style="max-height: 200px;">
+                            }
+                            else
+                            {
+                                <div class="bg-primary text-white d-flex align-items-center justify-content-center rounded" style="height: 200px; font-size: 3rem;">
+                                    @Model.Salon.NombreSalon.Substring(0, 1).ToUpper()
+                                </div>
+                            }
+                        </div>
+                        <div class="col-md-8">
+                            <table class="table table-borderless">
+                                <tr>
+                                    <th width="30%">NIT/RUC:</th>
+                                    <td>@Model.Salon.NitRuc</td>
+                                </tr>
+                                <tr>
+                                    <th>Dirección:</th>
+                                    <td>@Model.Salon.Direccion</td>
+                                </tr>
+                                <tr>
+                                    <th>Teléfono:</th>
+                                    <td>@Model.Salon.Telefono</td>
+                                </tr>
+                                <tr>
+                                    <th>Email:</th>
+                                    <td>@Model.Salon.Email</td>
+                                </tr>
+                                <tr>
+                                    <th>Horario:</th>
+                                    <td>@Model.Salon.HorarioAtencion</td>
+                                </tr>
+                                <tr>
+                                    <th>Estado:</th>
+                                    <td>
+                                        @if (Model.Salon.Activo)
+                                        {
+                                            <span class="badge bg-success">Activo</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="badge bg-danger">Inactivo</span>
+                                        }
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Fecha Registro:</th>
+                                    <td>@Model.Salon.FechaRegistro.ToString("dd/MM/yyyy HH:mm")</td>
+                                </tr>
+                            </table>
+                            
+                            @if (!string.IsNullOrEmpty(Model.Salon.Descripcion))
+                            {
+                                <div class="mt-3">
+                                    <strong>Descripción:</strong>
+                                    <p class="mt-2">@Model.Salon.Descripcion</p>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Servicios -->
+            <div class="card mb-4">
+                <div class="card-header bg-white d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Servicios Ofrecidos</h5>
+                    <span class="badge bg-primary">@Model.Servicios.Count() servicios</span>
+                </div>
+                <div class="card-body">
+                    @if (Model.Servicios.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Servicio</th>
+                                        <th>Categoría</th>
+                                        <th>Duración</th>
+                                        <th>Costo</th>
+                                        <th>Trabajadores</th>
+                                        <th>Estado</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var servicio in Model.Servicios)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <strong>@servicio.Nombre</strong>
+                                                @if (!string.IsNullOrEmpty(servicio.Descripcion))
+                                                {
+                                                    <br><small class="text-muted">@servicio.Descripcion</small>
+                                                }
+                                            </td>
+                                            <td>
+                                                @if (!string.IsNullOrEmpty(servicio.Categoria))
+                                                {
+                                                    <span class="badge bg-info">@servicio.Categoria</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-muted">Sin categoría</span>
+                                                }
+                                            </td>
+                                            <td>@servicio.DuracionMinutos min</td>
+                                            <td class="text-success fw-bold">$@servicio.Costo.ToString("F2")</td>
+                                            <td>
+                                                @{
+                                                    var trabajadoresCount = servicio.Trabajadores?.Count() ?? 0;
+                                                }
+                                                <span class="badge bg-secondary">@trabajadoresCount @(trabajadoresCount == 1 ? "trabajador" : "trabajadores")</span>
+                                            </td>
+                                            <td>
+                                                @if (servicio.Activo)
+                                                {
+                                                    <span class="badge bg-success">Activo</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="badge bg-danger">Inactivo</span>
+                                                }
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="text-center py-4">
+                            <i class="fas fa-concierge-bell fa-2x text-muted mb-2"></i>
+                            <p class="text-muted">Este salón aún no tiene servicios registrados</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Panel Lateral -->
+        <div class="col-lg-4">
+            <!-- Suscripción Actual -->
+            <div class="card mb-4">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0">Suscripción Actual</h5>
+                </div>
+                <div class="card-body">
+                    @{
+                        var suscripcionActiva = Model.Suscripciones?.FirstOrDefault(s => s.Estado == BeautyFlow_Manager.Models.EstadoSuscripcion.Activa);
+                    }
+                    @if (suscripcionActiva != null)
+                    {
+                        <div class="text-center mb-3">
+                            <span class="badge bg-@(suscripcionActiva.TipoSuscripcion.Nombre == "PREMIUM" ? "warning" : suscripcionActiva.TipoSuscripcion.Nombre == "BASIC" ? "info" : "secondary") fs-6">
+                                @suscripcionActiva.TipoSuscripcion.Nombre
+                            </span>
+                        </div>
+                        <ul class="list-unstyled mb-0">
+                            <li class="mb-2">
+                                <strong>Inicio:</strong> @suscripcionActiva.FechaInicio.ToString("dd/MM/yyyy")
+                            </li>
+                            @if (suscripcionActiva.FechaFin.HasValue)
+                            {
+                                <li class="mb-2">
+                                    <strong>Fin:</strong> @suscripcionActiva.FechaFin.Value.ToString("dd/MM/yyyy")
+                                </li>
+                            }
+                            @if (suscripcionActiva.FechaProximoPago.HasValue)
+                            {
+                                <li class="mb-2">
+                                    <strong>Próximo Pago:</strong> @suscripcionActiva.FechaProximoPago.Value.ToString("dd/MM/yyyy")
+                                </li>
+                            }
+                            <li class="mb-2">
+                                <strong>Estado:</strong> 
+                                <span class="badge bg-success">Activa</span>
+                            </li>
+                        </ul>
+                        <hr>
+                        <a asp-action="CambiarSuscripcion" asp-route-salonId="@Model.Salon.Id" class="btn btn-outline-primary btn-sm w-100">
+                            <i class="fas fa-exchange-alt me-1"></i>Cambiar Plan
+                        </a>
+                    }
+                    else
+                    {
+                        <div class="text-center py-3">
+                            <i class="fas fa-subscription fa-2x text-muted mb-2"></i>
+                            <p class="text-muted">Sin suscripción activa</p>
+                            <a asp-action="AsignarSuscripcion" asp-route-salonId="@Model.Salon.Id" class="btn btn-primary btn-sm">
+                                <i class="fas fa-plus me-1"></i>Asignar Plan
+                            </a>
+                        </div>
+                    }
+                </div>
+            </div>
+
+            <!-- Dueño del Salón -->
+            <div class="card mb-4">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0">Dueño del Salón</h5>
+                </div>
+                <div class="card-body text-center">
+                    @if (Model.Salon.Usuario != null)
+                    {
+                        <div class="mb-3">
+                            @if (!string.IsNullOrEmpty(Model.Salon.Usuario.FotoUrl))
+                            {
+                                <img src="@Model.Salon.Usuario.FotoUrl" alt="@Model.Salon.Usuario.NombreCompleto" class="rounded-circle" width="80" height="80" style="object-fit: cover;">
+                            }
+                            else
+                            {
+                                <div class="rounded-circle bg-primary text-white d-flex align-items-center justify-content-center mx-auto" style="width: 80px; height: 80px; font-size: 2rem;">
+                                    @Model.Salon.Usuario.NombreCompleto.Substring(0, 1).ToUpper()
+                                </div>
+                            }
+                        </div>
+                        <h6>@Model.Salon.Usuario.NombreCompleto</h6>
+                        <p class="text-muted small mb-2">@Model.Salon.Usuario.Email</p>
+                        <p class="small mb-0">
+                            <i class="fas fa-phone me-1"></i>@Model.Salon.Usuario.PhoneNumber
+                        </p>
+                    }
+                </div>
+            </div>
+
+            <!-- Estadísticas Rápidas -->
+            <div class="card">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0">Estadísticas</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row text-center">
+                        <div class="col-6 mb-3">
+                            <div class="display-6 text-primary">@Model.Servicios.Count()</div>
+                            <small class="text-muted">Servicios</small>
+                        </div>
+                        <div class="col-6 mb-3">
+                            @{
+                                var totalTrabajadores = Model.Servicios.SelectMany(s => s.Trabajadores ?? new List<BeautyFlow_Manager.Models.ServicioTrabajador>()).DistinctBy(t => t.TrabajadorId).Count();
+                            }
+                            <div class="display-6 text-success">@totalTrabajadores</div>
+                            <small class="text-muted">Trabajadores</small>
+                        </div>
+                        <div class="col-6">
+                            <div class="display-6 text-warning">@Model.Reservas?.Count()</div>
+                            <small class="text-muted">Reservas</small>
+                        </div>
+                        <div class="col-6">
+                            <div class="display-6 text-info">@Model.Suscripciones?.Count()</div>
+                            <small class="text-muted">Suscripciones</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
