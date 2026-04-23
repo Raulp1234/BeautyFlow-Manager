@@ -1,0 +1,124 @@
+@model BeautyFlow_Manager.Models.Servicio
+@{
+    ViewData["Title"] = "Asignar Trabajadores";
+}
+
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header bg-white">
+                    <h4 class="mb-0"><i class="fas fa-users-cog me-2"></i>Asignar Trabajadores a @Model.Nombre</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="AsignarTrabajadores" method="post">
+                        <input type="hidden" asp-for="Id" />
+                        
+                        <div class="alert alert-info mb-4">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <strong>Servicio:</strong> @Model.Nombre<br>
+                            <strong>Duración:</strong> @Model.DuracionMinutos minutos<br>
+                            <strong>Costo:</strong> $@Model.Costo.ToString("F2")
+                        </div>
+
+                        <div class="mb-4">
+                            <h5><i class="fas fa-user-check me-2"></i>Trabajadores Disponibles</h5>
+                            <p class="text-muted small">Selecciona los trabajadores que ofrecerán este servicio</p>
+                            
+                            <div id="trabajadoresContainer" class="row">
+                                @if (ViewBag.TrabajadoresDisponibles != null && ((List<BeautyFlow_Manager.Models.TrabajadorIndependiente>)ViewBag.TrabajadoresDisponibles).Any())
+                                {
+                                    var trabajadorIdsActuales = ViewBag.TrabajadorIdsActuales as List<Guid>;
+                                    foreach (var trabajador in (List<BeautyFlow_Manager.Models.TrabajadorIndependiente>)ViewBag.TrabajadoresDisponibles)
+                                    {
+                                        var isChecked = trabajadorIdsActuales != null && trabajadorIdsActuales.Contains(trabajador.Id);
+                                        <div class="col-md-6 mb-3">
+                                            <div class="form-check border rounded p-3 @(isChecked ? "bg-light border-primary" : "")">
+                                                <input type="checkbox" name="trabajadorIds" value="@trabajador.Id" class="form-check-input" id="trab_@trabajador.Id" @(isChecked ? "checked" : "") />
+                                                <label class="form-check-label w-100" for="trab_@trabajador.Id">
+                                                    <div class="d-flex align-items-start">
+                                                        <div class="flex-grow-1">
+                                                            <strong>@trabajador.NombreCompleto</strong>
+                                                            <br><small class="text-muted">@trabajador.EspecialidadPrincipal</small>
+                                                            @if (!string.IsNullOrEmpty(trabajador.Descripcion))
+                                                            {
+                                                                <br><small class="text-muted">@trabajador.Descripcion</small>
+                                                            }
+                                                        </div>
+                                                        @if (isChecked)
+                                                        {
+                                                            <span class="badge bg-success ms-2"><i class="fas fa-check"></i></span>
+                                                        }
+                                                    </div>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    }
+                                }
+                                else
+                                {
+                                    <div class="col-12">
+                                        <div class="alert alert-warning">
+                                            <i class="fas fa-exclamation-triangle me-2"></i>
+                                            No hay trabajadores independientes disponibles en el sistema.
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-primary px-4">
+                                <i class="fas fa-save me-1"></i>Guardar Asignaciones
+                            </button>
+                            <a asp-action="Servicios" class="btn btn-outline-secondary">
+                                <i class="fas fa-times me-1"></i>Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Resumen de trabajadores asignados -->
+            @if (ViewBag.TrabajadorIdsActuales != null && ((List<Guid>)ViewBag.TrabajadorIdsActuales).Any())
+            {
+                <div class="card mt-4">
+                    <div class="card-header bg-white">
+                        <h5 class="mb-0"><i class="fas fa-list-check me-2"></i>Trabajadores Actualmente Asignados</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            @foreach (var trabajador in (List<BeautyFlow_Manager.Models.TrabajadorIndependiente>)ViewBag.TrabajadoresDisponibles)
+                            {
+                                var trabajadorIdsActuales = ViewBag.TrabajadorIdsActuales as List<Guid>;
+                                if (trabajadorIdsActuales != null && trabajadorIdsActuales.Contains(trabajador.Id))
+                                {
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        @trabajador.NombreCompleto
+                                        <span class="badge bg-primary rounded-pill">@trabajador.EspecialidadPrincipal</span>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    // Resaltar visualmente cuando se selecciona/deselecciona un trabajador
+    document.querySelectorAll('input[name="trabajadorIds"]').forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            const parentDiv = this.closest('.form-check');
+            if (this.checked) {
+                parentDiv.classList.add('bg-light', 'border-primary');
+            } else {
+                parentDiv.classList.remove('bg-light', 'border-primary');
+            }
+        });
+    });
+</script>
+}
