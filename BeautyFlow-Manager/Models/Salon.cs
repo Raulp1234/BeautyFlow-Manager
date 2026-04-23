@@ -48,5 +48,8 @@ namespace BeautyFlow_Manager.Models
         
         public DateTime FechaRegistro { get; set; } = DateTime.UtcNow;
         public bool Activo { get; set; } = true;
+        
+        // Relación con solicitudes de contrato
+        public ICollection<SolicitudContrato>? SolicitudesRecibidas { get; set; }
     }
 }

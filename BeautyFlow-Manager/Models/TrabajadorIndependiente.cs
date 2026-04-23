@@ -55,6 +55,10 @@ namespace BeautyFlow_Manager.Models
         public Guid UsuarioId { get; set; }
         public Usuario? Usuario { get; set; }
         
+        // Relación con el contrato actual (un trabajador solo puede estar contratado por un dueño a la vez)
+        public Guid? ContratoActualId { get; set; }
+        public SolicitudContrato? ContratoActual { get; set; }
+        
         public DateTime FechaRegistro { get; set; } = DateTime.UtcNow;
         public bool Activo { get; set; } = true;
     }

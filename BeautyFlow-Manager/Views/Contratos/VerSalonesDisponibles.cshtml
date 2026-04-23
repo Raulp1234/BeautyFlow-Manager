@@ -1,0 +1,92 @@
+@model List<BeautyFlow_Manager.Models.Salon>
+@{
+    ViewData["Title"] = "Salones Disponibles";
+    var tieneContratoActivo = ViewBag.TieneContratoActivo as bool? ?? false;
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2>@ViewData["Title"]</h2>
+            <hr />
+            
+            @if (tieneContratoActivo)
+            {
+                <div class="alert alert-warning" role="alert">
+                    <i class="bi bi-exclamation-triangle"></i>
+                    <strong>Atención:</strong> Ya tienes un contrato activo. No puedes enviar nuevas solicitudes hasta que finalice tu contrato actual.
+                </div>
+                <a asp-action="MisSolicitudes" class="btn btn-primary">Ver Mis Solicitudes</a>
+            }
+            else
+            {
+                <p class="lead">Explora los salones disponibles y envía una solicitud de contrato.</p>
+            }
+        </div>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="alert alert-info" role="alert">
+                    <i class="bi bi-info-circle"></i>
+                    No hay salones registrados disponibles en este momento.
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row mt-4">
+            @foreach (var salon in Model)
+            {
+                <div class="col-md-6 col-lg-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0">@salon.NombreSalon</h5>
+                        </div>
+                        <div class="card-body">
+                            <p><i class="bi bi-geo-alt"></i> <strong>Dirección:</strong> @salon.Direccion</p>
+                            <p><i class="bi bi-telephone"></i> <strong>Teléfono:</strong> @salon.Telefono</p>
+                            @if (!string.IsNullOrEmpty(salon.Email))
+                            {
+                                <p><i class="bi bi-envelope"></i> <strong>Email:</strong> @salon.Email</p>
+                            }
+                            @if (!string.IsNullOrEmpty(salon.Descripcion))
+                            {
+                                <p><i class="bi bi-card-text"></i> <strong>Descripción:</strong> @salon.Descripcion</p>
+                            }
+                            @if (salon.Usuario != null)
+                            {
+                                <p><i class="bi bi-person"></i> <strong>Dueño:</strong> @salon.Usuario.NombreCompleto</p>
+                            }
+                        </div>
+                        <div class="card-footer bg-white">
+                            @if (tieneContratoActivo)
+                            {
+                                <button class="btn btn-secondary w-100" disabled>
+                                    <i class="bi bi-lock"></i> Contrato Activo
+                                </button>
+                            }
+                            else
+                            {
+                                <a asp-action="EnviarSolicitud" asp-route-salonId="@salon.Id" class="btn btn-success w-100">
+                                    <i class="bi bi-send"></i> Enviar Solicitud
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Volver al Dashboard
+            </a>
+        </div>
+    </div>
+</div>

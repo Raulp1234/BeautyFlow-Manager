@@ -1,0 +1,100 @@
+@model List<BeautyFlow_Manager.Models.TrabajadorIndependiente>
+@{
+    ViewData["Title"] = "Gestionar Trabajadores";
+    var salonName = ViewBag.SalonName as string ?? "Mi Salón";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2>@ViewData["Title"]</h2>
+            <hr />
+            <p class="lead"><strong>Salón:</strong> @salonName</p>
+            
+            <a asp-action="SolicitudesRecibidas" class="btn btn-primary mb-3">
+                <i class="bi bi-inbox"></i> Ver Solicitudes Recibidas
+            </a>
+        </div>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="alert alert-info" role="alert">
+                    <i class="bi bi-info-circle"></i>
+                    No tienes trabajadores contratados en este momento.
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card shadow">
+                    <div class="card-header bg-success text-white">
+                        <h4 class="mb-0">Trabajadores Contratados (@Model.Count)</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Trabajador</th>
+                                        <th>Especialidad</th>
+                                        <th>Teléfono</th>
+                                        <th>Email</th>
+                                        <th>Experiencia</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var trabajador in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <strong>@trabajador.NombreCompleto</strong><br>
+                                                <small class="text-muted">@trabajador.DocumentoIdentidad</small>
+                                            </td>
+                                            <td>@trabajador.EspecialidadPrincipal</td>
+                                            <td>@trabajador.Telefono</td>
+                                            <td>@trabajador.EmailProfesional</td>
+                                            <td>
+                                                @if (trabajador.AniosExperiencia.HasValue)
+                                                {
+                                                    <span>@trabajador.AniosExperiencia años</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="text-muted">-</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <form asp-action="FinalizarContrato" method="post" style="display:inline;" 
+                                                      onsubmit="return confirm('¿Estás seguro de que deseas finalizar el contrato con este trabajador? Esta acción lo liberará para que pueda trabajar con otros salones.');">
+                                                    <input type="hidden" name="trabajadorId" value="@trabajador.Id" />
+                                                    <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                        <i class="bi bi-x-circle"></i> Finalizar Contrato
+                                                    </button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Volver al Dashboard
+            </a>
+        </div>
+    </div>
+</div>

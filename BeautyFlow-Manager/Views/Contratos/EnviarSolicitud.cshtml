@@ -1,0 +1,62 @@
+@model BeautyFlow_Manager.Controllers.EnviarSolicitudViewModel
+@{
+    ViewData["Title"] = "Enviar Solicitud de Contrato";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2>@ViewData["Title"]</h2>
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-8">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Información del Salón</h4>
+                </div>
+                <div class="card-body">
+                    <p><strong>Nombre:</strong> @Model.NombreSalon</p>
+                    <p><strong>Dirección:</strong> @Model.DireccionSalon</p>
+                    <p><strong>Teléfono:</strong> @Model.TelefonoSalon</p>
+                    <p><strong>Dueño:</strong> @Model.DueñoSalon</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">Enviar Solicitud</h4>
+                </div>
+                <div class="card-body">
+                    <form asp-action="EnviarSolicitud" method="post">
+                        <input type="hidden" asp-for="SalonId" />
+                        
+                        <div class="mb-3">
+                            <label asp-for="MensajeTrabajador" class="form-label"></label>
+                            <textarea asp-for="MensajeTrabajador" class="form-control" rows="4" 
+                                      placeholder="Escribe un mensaje para el dueño del salón (opcional)"></textarea>
+                            <span asp-validation-for="MensajeTrabajador" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-send"></i> Enviar Solicitud
+                            </button>
+                            <a asp-action="VerSalonesDisponibles" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left"></i> Cancelar
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
