@@ -6,6 +6,7 @@ using BeautyFlow_Manager.Data;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
+using BeautyFlow_Manager.Models.ViewModels;
 
 namespace BeautyFlow_Manager.Controllers
 {
@@ -261,15 +262,5 @@ namespace BeautyFlow_Manager.Controllers
             if (claim != null && Guid.TryParse(claim.Value, out var userId)) return userId;
             return Guid.Empty;
         }
-    }
-
-    public class EnviarSolicitudViewModel
-    {
-        public Guid SalonId { get; set; }
-        [Display(Name = "Salon")] public string NombreSalon { get; set; } = string.Empty;
-        [Display(Name = "Direccion")] public string DireccionSalon { get; set; } = string.Empty;
-        [Display(Name = "Telefono")] public string TelefonoSalon { get; set; } = string.Empty;
-        [Display(Name = "Dueno del Salon")] public string DuenoSalon { get; set; } = string.Empty;
-        [Display(Name = "Mensaje para el dueno")] [StringLength(500)] public string? MensajeTrabajador { get; set; }
     }
 }
