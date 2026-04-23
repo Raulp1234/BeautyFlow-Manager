@@ -51,5 +51,11 @@ namespace BeautyFlow_Manager.Models
         
         // Relación con solicitudes de contrato
         public ICollection<SolicitudContrato>? SolicitudesRecibidas { get; set; }
+        
+        // Relación con servicios del salón
+        public ICollection<Servicio>? Servicios { get; set; }
+        
+        // Relación con suscripción actual (navegación directa)
+        public SalonSuscripcion? SuscripcionActual { get; set; }
     }
 }

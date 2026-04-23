@@ -99,6 +99,76 @@ namespace BeautyFlow_Manager.Helpers
             await CreateTestUser(userManager, "salon@beautyflow.com", "Salon123!", "Dueño Salón", "Salon", SalonRoleId);
             await CreateTestUser(userManager, "trabajador@beautyflow.com", "Trabajador123!", "Empleado Salón", "Trabajador", TrabajadorRoleId);
             await CreateTestUser(userManager, "cliente@beautyflow.com", "Cliente123!", "Cliente Regular", "Cliente", ClienteRoleId);
+            
+            // Inicializar tipos de suscripción
+            await InitializeSuscripciones(context);
+        }
+        
+        private static async Task InitializeSuscripciones(ApplicationDbContext context)
+        {
+            if (context.TiposSuscripcion.Any())
+                return;
+                
+            var suscripciones = new List<TipoSuscripcion>
+            {
+                new TipoSuscripcion
+                {
+                    Id = Guid.Parse("55555555-5555-5555-5555-555555555551"),
+                    Nombre = "FREE",
+                    Descripcion = "Plan gratuito básico para salones pequeños",
+                    PrecioMensual = 0.00m,
+                    PrecioAnual = 0.00m,
+                    DuracionDias = 30,
+                    MaxTrabajadores = 3,
+                    MaxServicios = 10,
+                    ComisionPorcentaje = 5.00m,
+                    PermiteMultiplesUbicaciones = false,
+                    IncluyeReportesAvanzados = false,
+                    IncluyeSoportePrioritario = false,
+                    IncluyePersonalizacionMarca = false,
+                    Activo = true,
+                    EsPlanDefecto = true
+                },
+                new TipoSuscripcion
+                {
+                    Id = Guid.Parse("55555555-5555-5555-5555-555555555552"),
+                    Nombre = "BASIC",
+                    Descripcion = "Plan básico con características esenciales",
+                    PrecioMensual = 29.99m,
+                    PrecioAnual = 299.99m,
+                    DuracionDias = 30,
+                    MaxTrabajadores = 10,
+                    MaxServicios = 50,
+                    ComisionPorcentaje = 3.00m,
+                    PermiteMultiplesUbicaciones = false,
+                    IncluyeReportesAvanzados = true,
+                    IncluyeSoportePrioritario = false,
+                    IncluyePersonalizacionMarca = false,
+                    Activo = true,
+                    EsPlanDefecto = false
+                },
+                new TipoSuscripcion
+                {
+                    Id = Guid.Parse("55555555-5555-5555-5555-555555555553"),
+                    Nombre = "PREMIUM",
+                    Descripcion = "Plan completo con todas las características",
+                    PrecioMensual = 59.99m,
+                    PrecioAnual = 599.99m,
+                    DuracionDias = 30,
+                    MaxTrabajadores = null, // Ilimitado
+                    MaxServicios = null, // Ilimitado
+                    ComisionPorcentaje = 1.00m,
+                    PermiteMultiplesUbicaciones = true,
+                    IncluyeReportesAvanzados = true,
+                    IncluyeSoportePrioritario = true,
+                    IncluyePersonalizacionMarca = true,
+                    Activo = true,
+                    EsPlanDefecto = false
+                }
+            };
+            
+            context.TiposSuscripcion.AddRange(suscripciones);
+            await context.SaveChangesAsync();
         }
 
         private static async Task CreateTestUser(UserManager<Usuario> userManager, string email, string password, string nombre, string roleName, Guid roleId)
