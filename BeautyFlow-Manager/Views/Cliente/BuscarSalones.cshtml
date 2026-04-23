@@ -79,7 +79,7 @@
                             <div class="mb-3">
                                 @{
                                     var serviciosCount = salon.Servicios?.Count() ?? 0;
-                                    var trabajadoresCount = salon.Servicios?.SelectMany(s => s.Trabajadores ?? new List<BeautyFlow_Manager.Models.ServicioTrabajador>()).DistinctBy(t => t.TrabajadorId).Count() ?? 0;
+                                    var trabajadoresCount = salon.Servicios?.SelectMany(s => s.Trabajadores ?? Enumerable.Empty<BeautyFlow_Manager.Models.TrabajadorIndependiente>()).DistinctBy(t => t.Id).Count() ?? 0;
                                 }
                                 <span class="badge bg-info me-1">@serviciosCount servicios</span>
                                 <span class="badge bg-secondary">@trabajadoresCount @(trabajadoresCount == 1 ? "trabajador" : "trabajadores")</span>
