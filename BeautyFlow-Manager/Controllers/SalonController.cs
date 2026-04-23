@@ -349,5 +349,98 @@ namespace BeautyFlow_Manager.Controllers
 
             return RedirectToAction("Reservas", "Salon");
         }
+
+        // GET: Salon/AsignarTrabajadores/5
+        public async Task<IActionResult> AsignarTrabajadores(Guid id)
+        {
+            var servicio = await _context.Servicios
+                .Include(s => s.ServiciosTrabajadores)
+                .FirstOrDefaultAsync(s => s.Id == id);
+
+            if (servicio == null)
+                return NotFound();
+
+            var trabajadoresDisponibles = await _context.TrabajadoresIndependientes.ToListAsync();
+            var trabajadorIdsActuales = servicio.ServiciosTrabajadores
+                .Where(st => st.Activo)
+                .Select(st => st.TrabajadorId)
+                .ToList();
+
+            ViewBag.TrabajadoresDisponibles = trabajadoresDisponibles;
+            ViewBag.TrabajadorIdsActuales = trabajadorIdsActuales;
+
+            return View(servicio);
+        }
+
+        // POST: Salon/AsignarTrabajadores/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AsignarTrabajadores(Guid id, List<Guid> trabajadorIds)
+        {
+            var servicio = await _context.Servicios
+                .Include(s => s.ServiciosTrabajadores)
+                .FirstOrDefaultAsync(s => s.Id == id);
+
+            if (servicio == null)
+                return NotFound();
+
+            // Obtener asignaciones actuales
+            var asignacionesActuales = await _context.ServiciosTrabajadores
+                .Where(st => st.ServicioId == id)
+                .ToListAsync();
+
+            // Desactivar las que no están en la nueva selección
+            foreach (var asignacion in asignacionesActuales)
+            {
+                if (!trabajadorIds.Contains(asignacion.TrabajadorId))
+                {
+                    asignacion.Activo = false;
+                }
+            }
+
+            // Agregar nuevas asignaciones
+            if (trabajadorIds != null)
+            {
+                foreach (var trabajadorId in trabajadorIds)
+                {
+                    var existe = asignacionesActuales.Any(st => st.TrabajadorId == trabajadorId && st.Activo);
+                    if (!existe)
+                    {
+                        var nuevaAsignacion = new ServicioTrabajador
+                        {
+                            Id = Guid.NewGuid(),
+                            ServicioId = id,
+                            TrabajadorId = trabajadorId,
+                            FechaAsignacion = DateTime.UtcNow,
+                            Activo = true
+                        };
+                        _context.ServiciosTrabajadores.Add(nuevaAsignacion);
+                    }
+                }
+            }
+
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Servicios", "Salon");
+        }
+
+        // GET: Salon/VerReservas
+        public async Task<IActionResult> VerReservas(Guid servicioId)
+        {
+            var servicio = await _context.Servicios.FindAsync(servicioId);
+            if (servicio == null)
+                return NotFound();
+
+            var reservas = await _context.Reservas
+                .Include(r => r.Cliente)
+                .Include(r => r.Servicio)
+                .Include(r => r.Trabajador)
+                .Where(r => r.ServicioId == servicioId)
+                .OrderByDescending(r => r.FechaHoraInicio)
+                .ToListAsync();
+
+            ViewBag.ServicioNombre = servicio.Nombre;
+
+            return View(reservas);
+        }
     }
 }
