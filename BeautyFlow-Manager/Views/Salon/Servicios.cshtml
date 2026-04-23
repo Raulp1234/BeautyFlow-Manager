@@ -1,0 +1,190 @@
+@model IEnumerable<BeautyFlow_Manager.Models.Servicio>
+@{
+    ViewData["Title"] = "Gestión de Servicios";
+}
+
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center">
+                <h2><i class="fas fa-concierge-bell me-2"></i>Mis Servicios</h2>
+                <a asp-action="CrearServicio" class="btn btn-primary">
+                    <i class="fas fa-plus me-2"></i>Nuevo Servicio
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resumen -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center">
+                    <h3>@Model.Count()</h3>
+                    <small>Total Servicios</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-success text-white">
+                <div class="card-body text-center">
+                    <h3>@Model.Count(s => s.Activo)</h3>
+                    <small>Servicios Activos</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-info text-white">
+                <div class="card-body text-center">
+                    <h3>@Model.Sum(s => s.Trabajadores?.Count() ?? 0)</h3>
+                    <small>Trabajadores Asignados</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-warning text-dark">
+                <div class="card-body text-center">
+                    <h3>$@Model.Sum(s => s.Costo).ToString("F2")</h3>
+                    <small>Costo Total Servicios</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lista de Servicios -->
+    <div class="card">
+        <div class="card-header bg-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0">Listado de Servicios</h5>
+            <div class="btn-group">
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="toggleActivos(true)">
+                    <i class="fas fa-check-circle me-1"></i>Activos
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="toggleActivos(false)">
+                    <i class="fas fa-times-circle me-1"></i>Inactivos
+                </button>
+                <button type="button" class="btn btn-sm btn-outline-secondary" onclick="toggleActivos(null)">
+                    <i class="fas fa-list me-1"></i>Todos
+                </button>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <div class="table-responsive">
+                <table class="table table-hover mb-0" id="tablaServicios">
+                    <thead class="bg-light">
+                        <tr>
+                            <th>Servicio</th>
+                            <th>Categoría</th>
+                            <th>Duración</th>
+                            <th>Costo</th>
+                            <th>Trabajadores</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var servicio in Model)
+                        {
+                            <tr class="fila-servicio @(servicio.Activo ? "activo" : "inactivo")">
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        @if (!string.IsNullOrEmpty(servicio.ImagenUrl))
+                                        {
+                                            <img src="@servicio.ImagenUrl" alt="@servicio.Nombre" class="rounded me-3" width="50" height="50" style="object-fit: cover;">
+                                        }
+                                        else
+                                        {
+                                            <div class="bg-primary text-white rounded d-flex align-items-center justify-content-center me-3" style="width: 50px; height: 50px;">
+                                                <i class="fas fa-cut"></i>
+                                            </div>
+                                        }
+                                        <div>
+                                            <strong>@servicio.Nombre</strong>
+                                            @if (!string.IsNullOrEmpty(servicio.Descripcion))
+                                            {
+                                                <br><small class="text-muted">@servicio.Descripcion</small>
+                                            }
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    @if (!string.IsNullOrEmpty(servicio.Categoria))
+                                    {
+                                        <span class="badge bg-info">@servicio.Categoria</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted">-</span>
+                                    }
+                                </td>
+                                <td>@servicio.DuracionMinutos min</td>
+                                <td class="text-success fw-bold">$@servicio.Costo.ToString("F2")</td>
+                                <td>
+                                    @{
+                                        var trabajadoresCount = servicio.Trabajadores?.Count() ?? 0;
+                                    }
+                                    @if (trabajadoresCount > 0)
+                                    {
+                                        <span class="badge bg-secondary">@trabajadoresCount @(trabajadoresCount == 1 ? "trabajador" : "trabajadores")</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-muted small">Sin asignar</span>
+                                    }
+                                </td>
+                                <td>
+                                    @if (servicio.Activo)
+                                    {
+                                        <span class="badge bg-success">Activo</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="badge bg-danger">Inactivo</span>
+                                    }
+                                </td>
+                                <td>
+                                    <div class="btn-group btn-group-sm">
+                                        <a asp-action="EditarServicio" asp-route-id="@servicio.Id" class="btn btn-outline-primary" title="Editar">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        <a asp-action="AsignarTrabajadores" asp-route-id="@servicio.Id" class="btn btn-outline-info" title="Asignar trabajadores">
+                                            <i class="fas fa-users"></i>
+                                        </a>
+                                        <a asp-action="VerReservas" asp-route-servicioId="@servicio.Id" class="btn btn-outline-warning" title="Ver reservas">
+                                            <i class="fas fa-calendar-alt"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            @if (!Model.Any())
+            {
+                <div class="text-center py-5">
+                    <i class="fas fa-concierge-bell fa-3x text-muted mb-3"></i>
+                    <p class="text-muted">Aún no has creado servicios para tu salón</p>
+                    <a asp-action="CrearServicio" class="btn btn-primary">
+                        <i class="fas fa-plus me-1"></i>Crear Primer Servicio
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+<script>
+    function toggleActivos(mostrarActivos) {
+        const filas = document.querySelectorAll('.fila-servicio');
+        filas.forEach(fila => {
+            const esActivo = fila.classList.contains('activo');
+            if (mostrarActivos === null || esActivo === mostrarActivos) {
+                fila.style.display = '';
+            } else {
+                fila.style.display = 'none';
+            }
+        });
+    }
+</script>
+}

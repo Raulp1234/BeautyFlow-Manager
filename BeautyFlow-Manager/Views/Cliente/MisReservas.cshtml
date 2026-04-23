@@ -1,0 +1,179 @@
+@model BeautyFlow_Manager.Models.ViewModels.ReservaViewModel
+@{
+    ViewData["Title"] = "Mis Reservas";
+}
+
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2><i class="fas fa-calendar-alt me-2"></i>Mis Reservas</h2>
+        </div>
+    </div>
+
+    <!-- Pestañas de estado -->
+    <ul class="nav nav-tabs mb-4" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#proximas" type="button">
+                Próximas <span class="badge bg-primary">@Model.ReservasProximas?.Count()</span>
+            </button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" data-bs-toggle="tab" data-bs-target="#historial" type="button">
+                Historial <span class="badge bg-secondary">@Model.ReservasHistorial?.Count()</span>
+            </button>
+        </li>
+    </ul>
+
+    <div class="tab-content">
+        <!-- Reservas Próximas -->
+        <div class="tab-pane fade show active" id="proximas" role="tabpanel">
+            @if (Model.ReservasProximas != null && Model.ReservasProximas.Any())
+            {
+                <div class="row">
+                    @foreach (var reserva in Model.ReservasProximas)
+                    {
+                        <div class="col-md-6 col-lg-4 mb-4">
+                            <div class="card h-100 border-primary">
+                                <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+                                    <span><i class="fas fa-clock me-1"></i>Próxima Cita</span>
+                                    <span class="badge bg-light text-dark">@reserva.Estado.ToString()</span>
+                                </div>
+                                <div class="card-body">
+                                    <h5 class="card-title">@reserva.ServicioNombre</h5>
+                                    
+                                    <div class="mb-3">
+                                        <div class="d-flex align-items-center mb-2">
+                                            <i class="fas fa-store me-2 text-primary"></i>
+                                            <strong>@reserva.SalonNombre</strong>
+                                        </div>
+                                        <div class="d-flex align-items-center mb-2">
+                                            <i class="fas fa-user me-2 text-primary"></i>
+                                            <span>@reserva.TrabajadorNombre</span>
+                                        </div>
+                                        <div class="d-flex align-items-center mb-2">
+                                            <i class="fas fa-calendar me-2 text-primary"></i>
+                                            <span>@reserva.FechaHoraInicio.ToString("dd/MM/yyyy")</span>
+                                        </div>
+                                        <div class="d-flex align-items-center mb-2">
+                                            <i class="fas fa-clock me-2 text-primary"></i>
+                                            <span>@reserva.FechaHoraInicio.ToString("HH:mm") - @reserva.FechaHoraFin.ToString("HH:mm")</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="text-success fw-bold">$@reserva.CostoTotal.ToString("F2")</span>
+                                        <span class="badge bg-@(reserva.EstadoPago == BeautyFlow_Manager.Models.EstadoPago.Pagado ? "success" : "warning")">
+                                            @reserva.EstadoPago.ToString()
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="card-footer bg-white">
+                                    <div class="btn-group w-100">
+                                        @if (reserva.Estado == BeautyFlow_Manager.Models.EstadoReserva.Confirmada)
+                                        {
+                                            <button type="button" class="btn btn-outline-success btn-sm" data-bs-toggle="modal" data-bs-target="#modalCancelar_@reserva.Id">
+                                                <i class="fas fa-times me-1"></i>Cancelar
+                                            </button>
+                                        }
+                                        <a asp-action="DetalleReserva" asp-route-id="@reserva.Id" class="btn btn-primary btn-sm">
+                                            <i class="fas fa-eye me-1"></i>Ver detalle
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Modal Cancelar -->
+                            <div class="modal fade" id="modalCancelar_@reserva.Id" tabindex="-1">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <form asp-action="CancelarReserva" method="post">
+                                            <input type="hidden" name="reservaId" value="@reserva.Id" />
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Cancelar Reserva</h5>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>¿Estás seguro que deseas cancelar esta cita?</p>
+                                                <div class="mb-3">
+                                                    <label class="form-label">Motivo de cancelación</label>
+                                                    <textarea name="motivo" class="form-control" rows="3" required></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                                <button type="submit" class="btn btn-danger">Sí, cancelar</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="text-center py-5">
+                    <i class="fas fa-calendar-check fa-4x text-muted mb-3"></i>
+                    <h5>No tienes reservas próximas</h5>
+                    <p class="text-muted">¡Es momento de agendar una nueva cita!</p>
+                    <a asp-action="BuscarSalones" class="btn btn-primary">
+                        <i class="fas fa-search me-1"></i>Buscar salones
+                    </a>
+                </div>
+            }
+        </div>
+
+        <!-- Historial -->
+        <div class="tab-pane fade" id="historial" role="tabpanel">
+            @if (Model.ReservasHistorial != null && Model.ReservasHistorial.Any())
+            {
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Fecha</th>
+                                <th>Servicio</th>
+                                <th>Salón</th>
+                                <th>Trabajador</th>
+                                <th>Costo</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var reserva in Model.ReservasHistorial.OrderByDescending(r => r.FechaHoraInicio))
+                            {
+                                <tr>
+                                    <td>@reserva.FechaHoraInicio.ToString("dd/MM/yyyy HH:mm")</td>
+                                    <td>@reserva.ServicioNombre</td>
+                                    <td>@reserva.SalonNombre</td>
+                                    <td>@reserva.TrabajadorNombre</td>
+                                    <td class="text-success">$@reserva.CostoTotal.ToString("F2")</td>
+                                    <td>
+                                        <span class="badge bg-@(reserva.Estado == BeautyFlow_Manager.Models.EstadoReserva.Completada ? "success" : reserva.Estado == BeautyFlow_Manager.Models.EstadoReserva.Cancelada ? "danger" : "secondary")">
+                                            @reserva.Estado.ToString()
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <a asp-action="DetalleReserva" asp-route-id="@reserva.Id" class="btn btn-sm btn-outline-primary">
+                                            <i class="fas fa-eye"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            }
+            else
+            {
+                <div class="text-center py-5">
+                    <i class="fas fa-history fa-4x text-muted mb-3"></i>
+                    <h5>No hay historial de reservas</h5>
+                    <p class="text-muted">Tus reservas completadas o canceladas aparecerán aquí</p>
+                </div>
+            }
+        </div>
+    </div>
+</div>
