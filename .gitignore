@@ -1,31 +1,47 @@
 ```
-# Build results
-bin/
-obj/
-out/
+# Compiled and build artifacts
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.a
+*.out
 
-# User-specific files
-.vs/
-*.user
-*.userosscache
-*.suo
+# Dependencies
+node_modules/
+venv/
+.venv/
+__pycache__/
+.mypy_cache/
+.pytest_cache/
+target/
+.gradle/
 
-# Environment specific settings
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# Environment
 .env
 .env.local
 *.env.*
 
-# Log files
-*.log
+# Editors
+.vscode/
+.idea/
 
-# OS generated files
+# OS specific
 .DS_Store
 Thumbs.db
 
-# Visual Studio Code
-.vscode/
+# Coverage
+coverage/
+htmlcov/
+.coverage
 
-# NuGet Packages
-*.nupkg
-packages/
+# Build outputs
+dist/
+build/
 ```

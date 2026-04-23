@@ -44,7 +44,7 @@
                     }
                     @if (Model.Trabajador?.PrecioReferencial.HasValue == true)
                     {
-                        <p><strong>Precio Referencial:</strong> $@Model.Trabajador?.PrecioReferencial.ToString("F2")</p>
+                        <p><strong>Precio Referencial:</strong> $@Model.Trabajador.PrecioReferencial.Value.ToString("F2")</p>
                     }
                     @if (!string.IsNullOrEmpty(Model.Trabajador?.Descripcion))
                     {
