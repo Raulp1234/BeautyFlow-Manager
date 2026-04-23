@@ -1,1 +1,36 @@
-Nothing needs to be added to the .gitignore file since only a source code file (.cs) was modified and no build artifacts, dependencies, or temporary files were detected in the changes.
+```
+# Build artifacts
+obj/
+bin/
+*.dll
+*.exe
+*.pdb
+*.config
+*.log
+
+# Dependencies
+packages/
+node_modules/
+
+# IDE files
+.vs/
+.VSCode/
+.vscode/
+*.user
+*.userosscache
+*.suo
+*.csproj.user
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Environment variables
+.env
+.env.local
+*.env.*
+
+# Testing
+TestResults/
+```
