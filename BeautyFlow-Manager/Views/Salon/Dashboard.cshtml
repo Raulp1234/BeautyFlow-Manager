@@ -1,0 +1,121 @@
+@{
+    ViewData["Title"] = "Dashboard";
+    ViewData["ActivePage"] = "Dashboard";
+}
+
+<div class="container-fluid py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2><i class="bi bi-speedometer2 me-2"></i>Panel de Control</h2>
+            <p class="text-muted">Bienvenido al panel de administración de @ViewBag.Salon?.Nombre</p>
+        </div>
+    </div>
+
+    <!-- Información del Salón -->
+    <div class="row mb-4">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0"><i class="bi bi-shop me-2"></i>Información del Salón</h5>
+                </div>
+                <div class="card-body">
+                    <p><strong>Nombre:</strong> @ViewBag.Salon?.Nombre</p>
+                    <p><strong>Dirección:</strong> @ViewBag.Salon?.Direccion</p>
+                    <p><strong>Teléfono:</strong> @ViewBag.Salon?.Telefono</p>
+                    <p><strong>Email:</strong> @ViewBag.Salon?.Email</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0"><i class="bi bi-credit-card me-2"></i>Suscripción Actual</h5>
+                </div>
+                <div class="card-body">
+                    @if (ViewBag.SuscripcionActual != null)
+                    {
+                        <p><strong>Plan:</strong> @ViewBag.SuscripcionActual.TipoSuscripcion?.Nombre</p>
+                        <p><strong>Estado:</strong> 
+                            <span class="badge bg-@(ViewBag.SuscripcionActual.Estado == BeautyFlow_Manager.Models.EstadoSuscripcion.Activa ? "success" : "secondary")">
+                                @ViewBag.SuscripcionActual.Estado
+                            </span>
+                        </p>
+                        <p><strong>Vence:</strong> @ViewBag.SuscripcionActual.FechaFin?.ToString("dd/MM/yyyy")</p>
+                        <p><strong>Próximo Pago:</strong> @ViewBag.SuscripcionActual.FechaProximoPago?.ToString("dd/MM/yyyy")</p>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No hay suscripción activa</p>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Métricas -->
+    <div class="row mb-4">
+        <div class="col-md-3">
+            <div class="card bg-primary text-white">
+                <div class="card-body text-center">
+                    <h3>@ViewBag.TotalServicios</h3>
+                    <small>Total Servicios</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-info text-white">
+                <div class="card-body text-center">
+                    <h3>@ViewBag.TotalTrabajadores</h3>
+                    <small>Trabajadores Asignados</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-success text-white">
+                <div class="card-body text-center">
+                    <h3>@ViewBag.TotalReservas</h3>
+                    <small>Total Reservas</small>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="card bg-warning text-dark">
+                <div class="card-body text-center">
+                    <h3>@ViewBag.ReservasPendientes</h3>
+                    <small>Reservas Pendientes</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Acciones Rápidas -->
+    <div class="row">
+        <div class="col-12">
+            <h4><i class="bi bi-lightning-charge me-2"></i>Acciones Rápidas</h4>
+        </div>
+        <div class="col-md-3 mb-3">
+            <a asp-action="CrearServicio" class="btn btn-outline-primary w-100 py-3">
+                <i class="bi bi-plus-circle d-block fs-3"></i>
+                Nuevo Servicio
+            </a>
+        </div>
+        <div class="col-md-3 mb-3">
+            <a asp-action="Servicios" class="btn btn-outline-info w-100 py-3">
+                <i class="bi bi-concierge-bell d-block fs-3"></i>
+                Gestionar Servicios
+            </a>
+        </div>
+        <div class="col-md-3 mb-3">
+            <a asp-action="Reservas" class="btn btn-outline-success w-100 py-3">
+                <i class="bi bi-calendar-check d-block fs-3"></i>
+                Ver Reservas
+            </a>
+        </div>
+        <div class="col-md-3 mb-3">
+            <a asp-action="VerReservas" asp-route-servicioId="0" class="btn btn-outline-secondary w-100 py-3" onclick="return false;" title="Seleccione un servicio primero">
+                <i class="bi bi-eye d-block fs-3"></i>
+                Reportes
+            </a>
+        </div>
+    </div>
+</div>
