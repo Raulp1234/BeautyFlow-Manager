@@ -1,66 +1,85 @@
 ```
-# Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
+# Compiled and build artifacts
+*.exe
+*.dll
+*.so
+*.class
+*.o
+*.obj
+*.out
+*.pyc
+__pycache__/
+
+# Dependencies
+node_modules/
+venv/
+.venv/
+.env
+.env.local
+.env.*
+
+# Build directories
+dist/
 build/
-bld/
-[Bb]in/
-[Oo]bj/
+target/
+*.egg-info/
 
-# Visual Studio Code
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+*.swo
+
+# Editors
 .vscode/
+.idea/
+*.swp
+*.swo
 
-# Visual Studio
-*.user
-*.suo
-*.userosscache
-*.sln.docstates
+# System files
+.DS_Store
+Thumbs.db
 
-# ASP.NET Core
-*.dbmdl
-*.dbproj.schemaview.xml
-*_AppData
-[Cc]redentials
-[Pp]ublish[Ee]ngine[Tt]emp_[Nn][A-Za-z0-9]*
-[Pp]ublish[Ee]ngine[Tt]emp_[A-Za-z0-9]*
-[Oo]ut/
-[Pp]ackages/
-*.Debug.csproj.User
-*.Release.csproj.User
-*.Build.CppClean.Cache
-*.VC.db
-*.VC.VC.opendb
+# Coverage
+coverage/
+htmlcov/
+.coverage
 
-# Web
+# Python specific
+*.pyc
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+
+# Java specific
+*.class
+*.jar
+.gradle/
+build/
+
+# Node specific
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Environment specific settings
-.env
-.env.local
-.env.*
-
-# Logs
-*.log
-*.diagsession
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-desktop.ini
-
-# Testing
-coverage/
-*.lcov
+# Compression files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
 ```

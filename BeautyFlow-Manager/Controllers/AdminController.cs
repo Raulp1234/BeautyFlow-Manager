@@ -184,7 +184,7 @@ namespace BeautyFlow_Manager.Controllers
             
             var viewModel = new AsignarSuscripcionViewModel
             {
-                SalonId = salonId,
+                SalonId = salonId.Value,
                 SalonNombre = salon.NombreSalon,
                 SuscripcionesDisponibles = await _context.TiposSuscripcion
                     .Where(s => s.Activo)
