@@ -15,6 +15,7 @@ namespace BeautyFlow_Manager.Data
         public DbSet<Rol> Roles { get; set; }
         public DbSet<Salon> Salones { get; set; }
         public DbSet<TrabajadorIndependiente> TrabajadoresIndependientes { get; set; }
+        public DbSet<SolicitudContrato> SolicitudesContrato { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -57,6 +58,34 @@ namespace BeautyFlow_Manager.Data
                       .WithMany()
                       .HasForeignKey(e => e.UsuarioId)
                       .OnDelete(DeleteBehavior.Cascade);
+                      
+                // Relación con contrato actual
+                entity.HasOne(e => e.ContratoActual)
+                      .WithMany()
+                      .HasForeignKey(e => e.ContratoActualId)
+                      .OnDelete(DeleteBehavior.SetNull);
+            });
+            
+            // Configurar SolicitudContrato
+            builder.Entity<SolicitudContrato>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                
+                entity.HasOne(e => e.Trabajador)
+                      .WithMany()
+                      .HasForeignKey(e => e.TrabajadorId)
+                      .OnDelete(DeleteBehavior.Cascade);
+                      
+                entity.HasOne(e => e.Salon)
+                      .WithMany(s => s.SolicitudesRecibidas)
+                      .HasForeignKey(e => e.SalonId)
+                      .OnDelete(DeleteBehavior.Cascade);
+                      
+                entity.Property(e => e.Estado).HasDefaultValue(EstadoSolicitud.Pendiente);
+                
+                // Un trabajador solo puede tener una solicitud pendiente a la vez
+                entity.HasIndex(e => new { e.TrabajadorId, e.Estado })
+                      .HasFilter("Estado = 0"); // Solo para pendientes
             });
         }
     }

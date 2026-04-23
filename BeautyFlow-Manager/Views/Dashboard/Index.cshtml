@@ -90,16 +90,72 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Acciones rápidas para Dueño de Salón -->
+        <div class="row mt-4">
+            <div class="col-md-6 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-inbox fs-1 text-primary"></i>
+                        <h5 class="mt-2">Solicitudes Recibidas</h5>
+                        <p class="text-muted">Revisa las solicitudes de trabajadores</p>
+                        <a asp-controller="Contratos" asp-action="SolicitudesRecibidas" class="btn btn-outline-primary">
+                            Ver Solicitudes
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-people fs-1 text-success"></i>
+                        <h5 class="mt-2">Gestionar Trabajadores</h5>
+                        <p class="text-muted">Administra tu equipo de trabajo</p>
+                        <a asp-controller="Contratos" asp-action="GestionarTrabajadores" class="btn btn-outline-success">
+                            Ver Trabajadores
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     }
     else if (userRole == "Trabajador")
     {
         <div class="row mt-4">
             <div class="col-12">
                 <div class="alert alert-warning" role="alert">
-                    <h4 class="alert-heading">Panel de Trabajador</h4>
-                    <p>Eres un empleado del salón.</p>
+                    <h4 class="alert-heading">Panel de Trabajador Independiente</h4>
+                    <p>Eres un trabajador independiente.</p>
                     <hr>
-                    <p class="mb-0">Puedes ver tu agenda, gestionar citas y actualizar tu perfil.</p>
+                    <p class="mb-0">Puedes buscar salones, enviar solicitudes y gestionar tu contrato.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Acciones rápidas para Trabajador Independiente -->
+        <div class="row mt-4">
+            <div class="col-md-6 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-search fs-1 text-primary"></i>
+                        <h5 class="mt-2">Buscar Salones</h5>
+                        <p class="text-muted">Explora salones disponibles</p>
+                        <a asp-controller="Contratos" asp-action="VerSalonesDisponibles" class="btn btn-outline-primary">
+                            Ver Salones
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card shadow-sm">
+                    <div class="card-body text-center">
+                        <i class="bi bi-file-text fs-1 text-info"></i>
+                        <h5 class="mt-2">Mis Solicitudes</h5>
+                        <p class="text-muted">Revisa el estado de tus solicitudes</p>
+                        <a asp-controller="Contratos" asp-action="MisSolicitudes" class="btn btn-outline-info">
+                            Ver Solicitudes
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>

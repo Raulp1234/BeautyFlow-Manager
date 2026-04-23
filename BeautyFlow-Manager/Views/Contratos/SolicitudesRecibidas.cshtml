@@ -1,0 +1,114 @@
+@model List<BeautyFlow_Manager.Models.SolicitudContrato>
+@{
+    ViewData["Title"] = "Solicitudes Recibidas";
+    var pendientesCount = ViewBag.PendientesCount as int? ?? 0;
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2>@ViewData["Title"]</h2>
+            <hr />
+            
+            @if (pendientesCount > 0)
+            {
+                <div class="alert alert-info" role="alert">
+                    <i class="bi bi-inbox"></i>
+                    <strong>@pendientesCount @(pendientesCount == 1 ? "solicitud pendiente" : "solicitudes pendientes")</strong> de@(pendientesCount == 1 ? "" : "") revisión.
+                </div>
+            }
+            
+            <a asp-action="GestionarTrabajadores" class="btn btn-primary mb-3">
+                <i class="bi bi-people"></i> Gestionar Trabajadores Contratados
+            </a>
+        </div>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="alert alert-info" role="alert">
+                    <i class="bi bi-info-circle"></i>
+                    No has recibido ninguna solicitud de contrato aún.
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card shadow">
+                    <div class="card-header bg-primary text-white">
+                        <h4 class="mb-0">Historial de Solicitudes</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Trabajador</th>
+                                        <th>Especialidad</th>
+                                        <th>Fecha Solicitud</th>
+                                        <th>Estado</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var solicitud in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                <strong>@solicitud.Trabajador?.NombreCompleto</strong><br>
+                                                <small class="text-muted">@solicitud.Trabajador?.Telefono</small>
+                                            </td>
+                                            <td>@solicitud.Trabajador?.EspecialidadPrincipal</td>
+                                            <td>@solicitud.FechaSolicitud.ToString("dd/MM/yyyy HH:mm")</td>
+                                            <td>
+                                                @if (solicitud.Estado == BeautyFlow_Manager.Models.EstadoSolicitud.Pendiente)
+                                                {
+                                                    <span class="badge bg-warning text-dark">Pendiente</span>
+                                                }
+                                                else if (solicitud.Estado == BeautyFlow_Manager.Models.EstadoSolicitud.Aceptada)
+                                                {
+                                                    <span class="badge bg-success">Aceptada</span>
+                                                }
+                                                else if (solicitud.Estado == BeautyFlow_Manager.Models.EstadoSolicitud.Rechazada)
+                                                {
+                                                    <span class="badge bg-danger">Rechazada</span>
+                                                }
+                                                else if (solicitud.Estado == BeautyFlow_Manager.Models.EstadoSolicitud.Cancelada)
+                                                {
+                                                    <span class="badge bg-secondary">Cancelada</span>
+                                                }
+                                                else if (solicitud.Estado == BeautyFlow_Manager.Models.EstadoSolicitud.Finalizada)
+                                                {
+                                                    <span class="badge bg-info">Finalizada</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a asp-action="VerDetalleSolicitud" asp-route-solicitudId="@solicitud.Id" 
+                                                   class="btn btn-sm btn-outline-info">
+                                                    <i class="bi bi-eye"></i> Ver Detalle
+                                                </a>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <a asp-controller="Dashboard" asp-action="Index" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Volver al Dashboard
+            </a>
+        </div>
+    </div>
+</div>

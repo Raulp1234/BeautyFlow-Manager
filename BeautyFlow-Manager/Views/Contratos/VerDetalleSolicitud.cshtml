@@ -1,0 +1,177 @@
+@model BeautyFlow_Manager.Models.SolicitudContrato
+@{
+    ViewData["Title"] = "Detalle de Solicitud";
+}
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12">
+            <h2>@ViewData["Title"]</h2>
+            <hr />
+        </div>
+    </div>
+
+    <div class="row">
+        <!-- Perfil del Trabajador -->
+        <div class="col-md-6">
+            <div class="card shadow mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="bi bi-person"></i> Perfil del Trabajador</h4>
+                </div>
+                <div class="card-body">
+                    @if (!string.IsNullOrEmpty(Model.Trabajador?.FotoUrl))
+                    {
+                        <div class="text-center mb-3">
+                            <img src="@Model.Trabajador.FotoUrl" alt="Foto de perfil" 
+                                 class="rounded-circle" style="width: 150px; height: 150px; object-fit: cover;" />
+                        </div>
+                    }
+                    <p><strong>Nombre:</strong> @Model.Trabajador?.NombreCompleto</p>
+                    <p><strong>Documento:</strong> @Model.Trabajador?.DocumentoIdentidad</p>
+                    <p><strong>Especialidad Principal:</strong> @Model.Trabajador?.EspecialidadPrincipal</p>
+                    @if (!string.IsNullOrEmpty(Model.Trabajador?.OtrasEspecialidades))
+                    {
+                        <p><strong>Otras Especialidades:</strong> @Model.Trabajador?.OtrasEspecialidades</p>
+                    }
+                    <p><strong>Teléfono:</strong> @Model.Trabajador?.Telefono</p>
+                    @if (!string.IsNullOrEmpty(Model.Trabajador?.EmailProfesional))
+                    {
+                        <p><strong>Email:</strong> @Model.Trabajador?.EmailProfesional</p>
+                    }
+                    @if (Model.Trabajador?.AniosExperiencia.HasValue == true)
+                    {
+                        <p><strong>Experiencia:</strong> @Model.Trabajador?.AniosExperiencia años</p>
+                    }
+                    @if (Model.Trabajador?.PrecioReferencial.HasValue == true)
+                    {
+                        <p><strong>Precio Referencial:</strong> $@Model.Trabajador?.PrecioReferencial.ToString("F2")</p>
+                    }
+                    @if (!string.IsNullOrEmpty(Model.Trabajador?.Descripcion))
+                    {
+                        <p><strong>Descripción:</strong></p>
+                        <p class="text-muted">@Model.Trabajador?.Descripcion</p>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Detalles de la Solicitud -->
+        <div class="col-md-6">
+            <div class="card shadow mb-4">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0"><i class="bi bi-file-text"></i> Detalles de la Solicitud</h4>
+                </div>
+                <div class="card-body">
+                    <p><strong>Fecha de Solicitud:</strong> @Model.FechaSolicitud.ToString("dd/MM/yyyy HH:mm")</p>
+                    <p><strong>Estado:</strong> 
+                        @if (Model.Estado == BeautyFlow_Manager.Models.EstadoSolicitud.Pendiente)
+                        {
+                            <span class="badge bg-warning text-dark fs-6">Pendiente</span>
+                        }
+                        else if (Model.Estado == BeautyFlow_Manager.Models.EstadoSolicitud.Aceptada)
+                        {
+                            <span class="badge bg-success fs-6">Aceptada</span>
+                        }
+                        else if (Model.Estado == BeautyFlow_Manager.Models.EstadoSolicitud.Rechazada)
+                        {
+                            <span class="badge bg-danger fs-6">Rechazada</span>
+                        }
+                        else if (Model.Estado == BeautyFlow_Manager.Models.EstadoSolicitud.Cancelada)
+                        {
+                            <span class="badge bg-secondary fs-6">Cancelada</span>
+                        }
+                        else if (Model.Estado == BeautyFlow_Manager.Models.EstadoSolicitud.Finalizada)
+                        {
+                            <span class="badge bg-info fs-6">Finalizada</span>
+                        }
+                    </p>
+                    
+                    @if (!string.IsNullOrEmpty(Model.MensajeTrabajador))
+                    {
+                        <div class="alert alert-light border">
+                            <strong>Mensaje del Trabajador:</strong>
+                            <p class="mb-0">@Model.MensajeTrabajador</p>
+                        </div>
+                    }
+
+                    @if (Model.Estado == BeautyFlow_Manager.Models.EstadoSolicitud.Rechazada && !string.IsNullOrEmpty(Model.MotivoRechazo))
+                    {
+                        <div class="alert alert-danger">
+                            <strong>Motivo de Rechazo:</strong>
+                            <p class="mb-0">@Model.MotivoRechazo</p>
+                        </div>
+                    }
+
+                    @if (Model.FechaRespuesta.HasValue)
+                    {
+                        <p><strong>Fecha de Respuesta:</strong> @Model.FechaRespuesta.Value.ToString("dd/MM/yyyy HH:mm")</p>
+                    }
+                </div>
+            </div>
+
+            @if (Model.Estado == BeautyFlow_Manager.Models.EstadoSolicitud.Pendiente)
+            {
+                <div class="card shadow">
+                    <div class="card-header bg-warning text-dark">
+                        <h4 class="mb-0"><i class="bi bi-gear"></i> Acciones</h4>
+                    </div>
+                    <div class="card-body">
+                        <form asp-action="AceptarSolicitud" method="post" class="mb-3">
+                            <input type="hidden" name="solicitudId" value="@Model.Id" />
+                            <button type="submit" class="btn btn-success w-100" 
+                                    onclick="return confirm('¿Estás seguro de que deseas aceptar a este trabajador?');">
+                                <i class="bi bi-check-circle"></i> Aceptar Solicitud
+                            </button>
+                        </form>
+                        
+                        <button type="button" class="btn btn-outline-danger w-100" data-bs-toggle="modal" data-bs-target="#rechazarModal">
+                            <i class="bi bi-x-circle"></i> Rechazar Solicitud
+                        </button>
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div class="alert alert-info">
+                    <i class="bi bi-info-circle"></i>
+                    Esta solicitud ya ha sido procesada. No se pueden realizar más acciones.
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12">
+            <a asp-action="SolicitudesRecibidas" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left"></i> Volver a Solicitudes
+            </a>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Rechazar -->
+<div class="modal fade" id="rechazarModal" tabindex="-1" aria-labelledby="rechazarModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form asp-action="RechazarSolicitud" method="post">
+                <input type="hidden" name="solicitudId" value="@Model.Id" />
+                <div class="modal-header bg-danger text-white">
+                    <h5 class="modal-title" id="rechazarModalLabel">Rechazar Solicitud</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>¿Estás seguro de que deseas rechazar esta solicitud?</p>
+                    <div class="mb-3">
+                        <label for="motivo" class="form-label">Motivo del rechazo (opcional)</label>
+                        <textarea class="form-control" id="motivo" name="motivo" rows="3" 
+                                  placeholder="Indica el motivo del rechazo..."></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-danger">Rechazar Solicitud</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
