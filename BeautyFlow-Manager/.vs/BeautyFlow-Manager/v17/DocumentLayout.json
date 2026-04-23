@@ -1,37 +1,61 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\",
+  "WorkspaceRootPath": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\beautyflow-manager\\helpers\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\migrations\\20260423045517_agregarsistemagestioncompleto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|solutionrelative:migrations\\20260423045517_agregarsistemagestioncompleto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\helpers\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|solutionrelative:helpers\\dbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\beautyflow-manager\\models\\trabajadorindependiente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|solutionrelative:controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\views\\contratos\\verdetallesolicitud.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|solutionrelative:views\\contratos\\verdetallesolicitud.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\views\\contratos\\enviarsolicitud.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|solutionrelative:views\\contratos\\enviarsolicitud.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\controllers\\contratoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|solutionrelative:controllers\\contratoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\models\\trabajadorindependiente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|solutionrelative:models\\trabajadorindependiente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\beautyflow-manager\\controllers\\perfilpublicocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\controllers\\perfilpublicocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|solutionrelative:controllers\\perfilpublicocontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\beautyflow-manager\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|solutionrelative:controllers\\clientecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\beautyflow-manager\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|solutionrelative:controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\beautyflow-manager\\models\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\models\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|solutionrelative:models\\viewmodels\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\beautyflow-manager\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|solutionrelative:models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\beautyflow-manager\\models\\rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|c:\\proyectos\\beautyflow-manager\\beautyflow-manager\\models\\rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F56E034F-9312-442D-B326-A7871DE7A50A}|BeautyFlow-Manager.csproj|solutionrelative:models\\rol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -42,8 +66,21 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 39,
+          "SelectedChildIndex": 0,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20260423045517_AgregarSistemaGestionCompleto.cs",
+              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Migrations\\20260423045517_AgregarSistemaGestionCompleto.cs",
+              "RelativeDocumentMoniker": "Migrations\\20260423045517_AgregarSistemaGestionCompleto.cs",
+              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Migrations\\20260423045517_AgregarSistemaGestionCompleto.cs",
+              "RelativeToolTip": "Migrations\\20260423045517_AgregarSistemaGestionCompleto.cs",
+              "ViewState": "AQIAAKYBAAAAAAAAAAAAALYBAAA8AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-23T04:55:44.917Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:132:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
@@ -183,49 +220,111 @@
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "TrabajadorIndependiente.cs",
-              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\TrabajadorIndependiente.cs",
-              "RelativeDocumentMoniker": "Models\\TrabajadorIndependiente.cs",
-              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\TrabajadorIndependiente.cs",
-              "RelativeToolTip": "Models\\TrabajadorIndependiente.cs",
-              "ViewState": "AQIAACEAAAAAAAAAAAAcwDIAAAAPAAAA",
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T03:34:14.967Z",
+              "WhenOpened": "2026-04-23T04:51:47.088Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "ClienteController.cs",
-              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\ClienteController.cs",
-              "RelativeDocumentMoniker": "Controllers\\ClienteController.cs",
-              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\ClienteController.cs",
-              "RelativeToolTip": "Controllers\\ClienteController.cs",
-              "ViewState": "AQIAAIAAAAAAAAAAAAAcwJEAAAAVAAAA",
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "Controllers\\AdminController.cs",
+              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "Controllers\\AdminController.cs",
+              "ViewState": "AQIAAK4AAAAAAAAAAAAawLoAAAAoAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T03:34:05.509Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PerfilPublicoController.cs",
-              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\PerfilPublicoController.cs",
-              "RelativeDocumentMoniker": "Controllers\\PerfilPublicoController.cs",
-              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\PerfilPublicoController.cs",
-              "RelativeToolTip": "Controllers\\PerfilPublicoController.cs",
-              "ViewState": "AQIAAEcBAAAAAAAAAADwv1UBAAAPAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-20T03:15:34.302Z",
+              "WhenOpened": "2026-04-23T04:41:17.423Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "VerDetalleSolicitud.cshtml",
+              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Views\\Contratos\\VerDetalleSolicitud.cshtml",
+              "RelativeDocumentMoniker": "Views\\Contratos\\VerDetalleSolicitud.cshtml",
+              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Views\\Contratos\\VerDetalleSolicitud.cshtml",
+              "RelativeToolTip": "Views\\Contratos\\VerDetalleSolicitud.cshtml",
+              "ViewState": "AQIAACAAAAAAAAAAAAAswC4AAAB9AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-23T03:18:50.496Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EnviarSolicitud.cshtml",
+              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Views\\Contratos\\EnviarSolicitud.cshtml",
+              "RelativeDocumentMoniker": "Views\\Contratos\\EnviarSolicitud.cshtml",
+              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Views\\Contratos\\EnviarSolicitud.cshtml",
+              "RelativeToolTip": "Views\\Contratos\\EnviarSolicitud.cshtml",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAswBcAAABAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-23T03:18:44.193Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ContratosController.cs",
+              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\ContratosController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ContratosController.cs",
+              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\ContratosController.cs",
+              "RelativeToolTip": "Controllers\\ContratosController.cs",
+              "ViewState": "AQIAAC0AAAAAAAAAAAAhwDoAAAC3AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-23T03:18:22.926Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TrabajadorIndependiente.cs",
+              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\TrabajadorIndependiente.cs",
+              "RelativeDocumentMoniker": "Models\\TrabajadorIndependiente.cs",
+              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\TrabajadorIndependiente.cs",
+              "RelativeToolTip": "Models\\TrabajadorIndependiente.cs",
+              "ViewState": "AQIAACEAAAAAAAAAAAAcwDIAAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T03:34:14.967Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ClienteController.cs",
+              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\ClienteController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ClienteController.cs",
+              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\ClienteController.cs",
+              "RelativeToolTip": "Controllers\\ClienteController.cs",
+              "ViewState": "AQIAAIAAAAAAAAAAAAAcwJEAAAAVAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T03:34:05.509Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PerfilPublicoController.cs",
+              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\PerfilPublicoController.cs",
+              "RelativeDocumentMoniker": "Controllers\\PerfilPublicoController.cs",
+              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\PerfilPublicoController.cs",
+              "RelativeToolTip": "Controllers\\PerfilPublicoController.cs",
+              "ViewState": "AQIAAEcBAAAAAAAAAADwv1UBAAAPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-20T03:15:34.302Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "AccountController.cs",
-              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\AccountController.cs",
+              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\AccountController.cs",
               "RelativeDocumentMoniker": "Controllers\\AccountController.cs",
-              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\AccountController.cs",
+              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Controllers\\AccountController.cs",
               "RelativeToolTip": "Controllers\\AccountController.cs",
               "ViewState": "AQIAAEYAAAAAAAAAAAAcwFcAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -233,11 +332,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 11,
               "Title": "RegisterViewModel.cs",
-              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\ViewModels\\RegisterViewModel.cs",
+              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\ViewModels\\RegisterViewModel.cs",
               "RelativeDocumentMoniker": "Models\\ViewModels\\RegisterViewModel.cs",
-              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\ViewModels\\RegisterViewModel.cs",
+              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\ViewModels\\RegisterViewModel.cs",
               "RelativeToolTip": "Models\\ViewModels\\RegisterViewModel.cs",
               "ViewState": "AQIAAA4AAAAAAAAAAAA2wB8AAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -245,24 +344,24 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "DbInitializer.cs",
-              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Helpers\\DbInitializer.cs",
+              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Helpers\\DbInitializer.cs",
               "RelativeDocumentMoniker": "Helpers\\DbInitializer.cs",
-              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Helpers\\DbInitializer.cs",
+              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Helpers\\DbInitializer.cs",
               "RelativeToolTip": "Helpers\\DbInitializer.cs",
-              "ViewState": "AQIAADQAAAAAAAAAAAAEwEUAAAAMAAAA",
+              "ViewState": "AQIAAF4AAAAAAAAAAAD4v2wAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-20T03:00:55.908Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 12,
               "Title": "ErrorViewModel.cs",
-              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\ErrorViewModel.cs",
+              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\ErrorViewModel.cs",
               "RelativeDocumentMoniker": "Models\\ErrorViewModel.cs",
-              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\ErrorViewModel.cs",
+              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\ErrorViewModel.cs",
               "RelativeToolTip": "Models\\ErrorViewModel.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -270,11 +369,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 13,
               "Title": "Rol.cs",
-              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\Rol.cs",
+              "DocumentMoniker": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\Rol.cs",
               "RelativeDocumentMoniker": "Models\\Rol.cs",
-              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\Rol.cs",
+              "ToolTip": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\Models\\Rol.cs",
               "RelativeToolTip": "Models\\Rol.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

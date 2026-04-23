@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qgfEr0YVYdA=",
+  "dgSpecHash": "rGbvh3vzWRc=",
   "success": true,
-  "projectFilePath": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager.csproj",
+  "projectFilePath": "C:\\Proyectos\\BeautyFlow-Manager\\BeautyFlow-Manager\\BeautyFlow-Manager.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Raúl\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\Raúl\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

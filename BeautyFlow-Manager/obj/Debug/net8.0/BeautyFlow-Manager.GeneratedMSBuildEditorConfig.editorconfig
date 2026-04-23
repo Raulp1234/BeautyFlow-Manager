@@ -9,75 +9,107 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = BeautyFlow_Manager
 build_property.RootNamespace = BeautyFlow_Manager
-build_property.ProjectDir = C:\Proyectos\BeautyFlow-Manager\BeautyFlow-Manager\BeautyFlow-Manager\
+build_property.ProjectDir = C:\Proyectos\BeautyFlow-Manager\BeautyFlow-Manager\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Proyectos\BeautyFlow-Manager\BeautyFlow-Manager\BeautyFlow-Manager
+build_property.MSBuildProjectDirectory = C:\Proyectos\BeautyFlow-Manager\BeautyFlow-Manager
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/Account/AccessDenied.cshtml]
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/Account/Lockout.cshtml]
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/Account/Lockout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2Nrb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/Account/Login.cshtml]
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/Account/Register.cshtml]
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/Cliente/MiPerfil.cshtml]
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/Admin/Dashboard.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cRGFzaGJvYXJkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/Admin/Suscripciones.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cU3VzY3JpcGNpb25lcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/Cliente/MiPerfil.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZVxNaVBlcmZpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/Dashboard/Index.cshtml]
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/Contratos/EnviarSolicitud.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9zXEVudmlhclNvbGljaXR1ZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/Contratos/GestionarTrabajadores.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9zXEdlc3Rpb25hclRyYWJhamFkb3Jlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/Contratos/MisSolicitudes.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9zXE1pc1NvbGljaXR1ZGVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/Contratos/SolicitudesRecibidas.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9zXFNvbGljaXR1ZGVzUmVjaWJpZGFzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/Contratos/VerDetalleSolicitud.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9zXFZlckRldGFsbGVTb2xpY2l0dWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/Contratos/VerSalonesDisponibles.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhdG9zXFZlclNhbG9uZXNEaXNwb25pYmxlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/Dashboard/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRGFzaGJvYXJkXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/Home/Index.cshtml]
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/Home/Privacy.cshtml]
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/PerfilPublico/CrearPerfil.cshtml]
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/PerfilPublico/CrearPerfil.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsUHVibGljb1xDcmVhclBlcmZpbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/PerfilPublico/CrearPerfilSalon.cshtml]
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/PerfilPublico/CrearPerfilSalon.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsUHVibGljb1xDcmVhclBlcmZpbFNhbG9uLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/PerfilPublico/CrearPerfilTrabajador.cshtml]
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/PerfilPublico/CrearPerfilTrabajador.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVyZmlsUHVibGljb1xDcmVhclBlcmZpbFRyYWJhamFkb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/Shared/Error.cshtml]
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/_ViewImports.cshtml]
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/_ViewStart.cshtml]
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/BeautyFlow-Manager/Views/Shared/_Layout.cshtml]
+[C:/Proyectos/BeautyFlow-Manager/BeautyFlow-Manager/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-0lg9ycielg
