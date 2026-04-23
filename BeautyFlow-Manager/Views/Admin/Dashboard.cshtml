@@ -1,0 +1,199 @@
+@model BeautyFlow_Manager.Controllers.AdminDashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard Administrativo";
+}
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="display-5"><i class="bi bi-speedometer2"></i> Dashboard Administrativo</h1>
+            <p class="text-muted">Panel de control general del sistema BeautyFlow</p>
+        </div>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <!-- Tarjetas de Estadísticas Principales -->
+    <div class="row g-4 mb-4">
+        <div class="col-md-3">
+            <div class="card bg-primary text-white h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title mb-0">Total Salones</h6>
+                            <h2 class="my-2">@Model.TotalSalones</h2>
+                        </div>
+                        <i class="bi bi-shop display-4 opacity-50"></i>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent border-0">
+                    <a asp-action="Salones" class="text-white text-decoration-none">
+                        Ver todos <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-success text-white h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title mb-0">Trabajadores</h6>
+                            <h2 class="my-2">@Model.TotalTrabajadores</h2>
+                        </div>
+                        <i class="bi bi-people display-4 opacity-50"></i>
+                    </div>
+                </div>
+                <div class="card-footer bg-transparent border-0">
+                    <a asp-action="Trabajadores" class="text-white text-decoration-none">
+                        Ver todos <i class="bi bi-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-info text-white h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title mb-0">Usuarios Totales</h6>
+                            <h2 class="my-2">@Model.TotalUsuarios</h2>
+                        </div>
+                        <i class="bi bi-person-badge display-4 opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="card bg-warning text-dark h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h6 class="card-title mb-0">Reservas Hoy</h6>
+                            <h2 class="my-2">@Model.TotalReservasHoy</h2>
+                        </div>
+                        <i class="bi bi-calendar-check display-4 opacity-50"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Distribución por Planes de Suscripción -->
+        <div class="col-md-8">
+            <div class="card h-100">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0"><i class="bi bi-pie-chart"></i> Salones por Plan de Suscripción</h5>
+                </div>
+                <div class="card-body">
+                    @if (Model.SalonesPorSuscripcion.Any())
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Plan</th>
+                                        <th class="text-end">Cantidad de Salones</th>
+                                        <th class="text-end">Porcentaje</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        var totalSalonesConPlan = Model.SalonesPorSuscripcion.Sum(s => s.Cantidad);
+                                    }
+                                    @foreach (var plan in Model.SalonesPorSuscripcion.OrderByDescending(p => p.Cantidad))
+                                    {
+                                        var porcentaje = totalSalonesConPlan > 0 ? (plan.Cantidad * 100.0 / totalSalonesConPlan) : 0;
+                                        <tr>
+                                            <td>
+                                                <span class="badge @(plan.NombrePlan == "FREE" ? "bg-secondary" : plan.NombrePlan == "BASIC" ? "bg-primary" : "bg-warning text-dark")">
+                                                    @plan.NombrePlan
+                                                </span>
+                                            </td>
+                                            <td class="text-end">@plan.Cantidad</td>
+                                            <td class="text-end">@porcentaje.ToString("F1")%</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+                    else
+                    {
+                        <p class="text-muted text-center my-4">No hay salones con suscripción activa aún.</p>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <!-- Ingresos Mensuales -->
+        <div class="col-md-4">
+            <div class="card h-100">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0"><i class="bi bi-currency-dollar"></i> Ingresos Mensuales</h5>
+                </div>
+                <div class="card-body text-center">
+                    <div class="display-4 text-success mb-3">
+                        $@Model.IngresosMes.ToString("F2")
+                    </div>
+                    <p class="text-muted">Proyectado de suscripciones activas</p>
+                    <hr />
+                    <div class="d-grid gap-2">
+                        <a asp-action="Suscripciones" class="btn btn-outline-primary">
+                            <i class="bi bi-gear"></i> Gestionar Planes
+                        </a>
+                        <a asp-action="Reportes" class="btn btn-outline-secondary">
+                            <i class="bi bi-graph-up"></i> Ver Reportes Completos
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accesos Rápidos -->
+    <div class="row g-4 mt-4">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header bg-white">
+                    <h5 class="mb-0"><i class="bi bi-lightning-charge"></i> Accesos Rápidos</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-3">
+                            <a asp-action="CrearSuscripcion" class="btn btn-primary w-100">
+                                <i class="bi bi-plus-circle"></i> Nuevo Plan
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a asp-action="Salones" class="btn btn-outline-primary w-100">
+                                <i class="bi bi-building"></i> Gestionar Salones
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a asp-action="Trabajadores" class="btn btn-outline-success w-100">
+                                <i class="bi bi-people"></i> Gestionar Trabajadores
+                            </a>
+                        </div>
+                        <div class="col-md-3">
+                            <a asp-action="Reportes" class="btn btn-outline-info w-100">
+                                <i class="bi bi-file-earmark-bar-graph"></i> Reportes
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

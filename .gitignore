@@ -1,40 +1,66 @@
 ```
-# Build artifacts
-bin/
-obj/
-*.dll
-*.exe
-*.pdb
-*.config
-*.csproj.user
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+build/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio Code
+.vscode/
+
+# Visual Studio
+*.user
+*.suo
 *.userosscache
 *.sln.docstates
 
-# Dependencies
-packages/
+# ASP.NET Core
+*.dbmdl
+*.dbproj.schemaview.xml
+*_AppData
+[Cc]redentials
+[Pp]ublish[Ee]ngine[Tt]emp_[Nn][A-Za-z0-9]*
+[Pp]ublish[Ee]ngine[Tt]emp_[A-Za-z0-9]*
+[Oo]ut/
+[Pp]ackages/
+*.Debug.csproj.User
+*.Release.csproj.User
+*.Build.CppClean.Cache
+*.VC.db
+*.VC.VC.opendb
+
+# Web
 node_modules/
-bower_components/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment specific settings
+.env
+.env.local
+.env.*
 
 # Logs
 *.log
-
-# Environment specific
-.vs/
-.vshost.exe
-.user
-.lock
+*.diagsession
 
 # OS generated files
 .DS_Store
-Thumbs.db
-ehthumbs.db
-Icon?
+.DS_Store?
 ._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
 
 # Testing
-TestResults/
-
-# NuGet
-*.nupkg
-.nuget/
+coverage/
+*.lcov
 ```

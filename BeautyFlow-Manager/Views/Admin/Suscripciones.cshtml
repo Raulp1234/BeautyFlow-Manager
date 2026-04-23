@@ -1,0 +1,102 @@
+@model IEnumerable<BeautyFlow_Manager.Models.TipoSuscripcion>
+
+@{
+    ViewData["Title"] = "Gestión de Suscripciones";
+}
+
+<div class="container-fluid">
+    <div class="row mb-4">
+        <div class="col-12 d-flex justify-content-between align-items-center">
+            <div>
+                <h1 class="display-6"><i class="bi bi-credit-card"></i> Planes de Suscripción</h1>
+                <p class="text-muted">Administra los diferentes planes disponibles para los salones</p>
+            </div>
+            <a asp-action="CrearSuscripcion" class="btn btn-primary">
+                <i class="bi bi-plus-circle"></i> Crear Nuevo Plan
+            </a>
+        </div>
+    </div>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+            @TempData["Success"]
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        </div>
+    }
+
+    <div class="row g-4">
+        @foreach (var plan in Model.OrderBy(p => p.PrecioMensual))
+        {
+            <div class="col-md-4">
+                <div class="card h-100 @(plan.EsPlanDefecto ? "border-primary" : "") @(plan.Activo ? "" : "border-secondary")">
+                    @if (plan.EsPlanDefecto)
+                    {
+                        <div class="card-header bg-primary text-white text-center">
+                            <small><i class="bi bi-star-fill"></i> PLAN POR DEFECTO</small>
+                        </div>
+                    }
+                    <div class="card-body text-center">
+                        <h3 class="card-title">@plan.Nombre</h3>
+                        <p class="text-muted">@plan.Descripcion</p>
+                        
+                        <div class="display-6 my-3">
+                            $@plan.PrecioMensual.ToString("F2")
+                            <small class="text-muted">/mes</small>
+                        </div>
+                        
+                        @if (plan.PrecioAnual.HasValue)
+                        {
+                            <p class="text-success">
+                                <i class="bi bi-tag"></i> 
+                                Anual: $@plan.PrecioAnual.Value.ToString("F2") 
+                                <small>(Ahorra @(((plan.PrecioMensual * 12 - plan.PrecioAnual.Value) / (plan.PrecioMensual * 12) * 100).ToString("F0"))%)</small>
+                            </p>
+                        }
+                        
+                        <hr />
+                        
+                        <ul class="list-unstyled text-start mx-auto" style="max-width: 300px;">
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle text-success"></i>
+                                <strong>@(plan.MaxTrabajadores.HasValue ? plan.MaxTrabajadores.Value.ToString() : "Ilimitado")</strong> trabajadores máx.
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle text-success"></i>
+                                <strong>@(plan.MaxServicios.HasValue ? plan.MaxServicios.Value.ToString() : "Ilimitados")</strong> servicios máx.
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi bi-check-circle text-success"></i>
+                                <strong>@plan.ComisionPorcentaje.ToString("F1")%</strong> comisión por reserva
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi @(plan.PermiteMultiplesUbicaciones ? "bi-check-circle text-success" : "bi-x-circle text-muted")"></i>
+                                Múltiples ubicaciones
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi @(plan.IncluyeReportesAvanzados ? "bi-check-circle text-success" : "bi-x-circle text-muted")"></i>
+                                Reportes avanzados
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi @(plan.IncluyeSoportePrioritario ? "bi-check-circle text-success" : "bi-x-circle text-muted")"></i>
+                                Soporte prioritario
+                            </li>
+                            <li class="mb-2">
+                                <i class="bi @(plan.IncluyePersonalizacionMarca ? "bi-check-circle text-success" : "bi-x-circle text-muted")"></i>
+                                Personalización de marca
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer bg-white text-center">
+                        <span class="badge @(plan.Activo ? "bg-success" : "bg-secondary") me-2">
+                            @(plan.Activo ? "Activo" : "Inactivo")
+                        </span>
+                        <a asp-action="EditarSuscripcion" asp-route-id="@plan.Id" class="btn btn-sm btn-outline-primary">
+                            <i class="bi bi-pencil"></i> Editar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
