@@ -48,6 +48,10 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     await DbInitializer.InitializeAsync(scope.ServiceProvider);
+    
+    // Completar datos faltantes para usuarios creados por seeder
+    // Esto simula el flujo normal de registro de salón/trabajador
+    await SeedDataCompleter.CompleteAllSeedDataAsync(scope.ServiceProvider);
 }
 
 // Configure the HTTP request pipeline.
