@@ -153,7 +153,7 @@ namespace BeautyFlow_Manager.Data
                 entity.HasOne(e => e.Trabajador)
                       .WithMany()
                       .HasForeignKey(e => e.TrabajadorId)
-                      .OnDelete(DeleteBehavior.Cascade);
+                      .OnDelete(DeleteBehavior.Restrict); // Cambiado a Restrict para evitar cascade paths
                       
                 entity.Property(e => e.Activo).HasDefaultValue(true);
                 
