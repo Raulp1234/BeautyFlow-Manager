@@ -34,5 +34,22 @@ namespace BeautyFlow_Manager.Models
         [Display(Name = "Notas Internas")]
         [StringLength(300)]
         public string? NotasInternas { get; set; }
+        
+        // Propiedades de navegación para acceder a datos del trabajador relacionado
+        [NotMapped]
+        [Display(Name = "Nombre")]
+        public string? Nombre => Trabajador?.NombreCompleto;
+        
+        [NotMapped]
+        [Display(Name = "Foto")]
+        public string? FotoUrl => Trabajador?.FotoUrl;
+        
+        [NotMapped]
+        [Display(Name = "Especialidad")]
+        public string? Especialidad => Trabajador?.EspecialidadPrincipal;
+        
+        [NotMapped]
+        [Display(Name = "Años de Experiencia")]
+        public int? AniosExperiencia => Trabajador?.AniosExperiencia;
     }
 }

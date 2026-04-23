@@ -93,6 +93,19 @@ namespace BeautyFlow_Manager.Models
         [Display(Name = "Referencia de Pago")]
         [StringLength(100)]
         public string? ReferenciaPago { get; set; }
+        
+        // Propiedades de navegación para mostrar información relacionada en vistas
+        [NotMapped]
+        [Display(Name = "Servicio")]
+        public string? ServicioNombre => Servicio?.Nombre;
+        
+        [NotMapped]
+        [Display(Name = "Salón")]
+        public string? SalonNombre => Salon?.NombreSalon;
+        
+        [NotMapped]
+        [Display(Name = "Trabajador")]
+        public string? TrabajadorNombre => Trabajador?.NombreCompleto;
     }
     
     public enum EstadoReserva
