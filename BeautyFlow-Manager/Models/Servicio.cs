@@ -65,6 +65,13 @@ namespace BeautyFlow_Manager.Models
         [Display(Name = "Trabajadores Asignados")]
         public ICollection<ServicioTrabajador>? ServiciosTrabajadores { get; set; }
         
+        // Propiedad de navegación para acceder fácilmente a los trabajadores
+        [NotMapped]
+        [Display(Name = "Trabajadores")]
+        public IEnumerable<TrabajadorIndependiente>? Trabajadores => 
+            ServiciosTrabajadores?.Where(st => st.Activo && st.Trabajador != null)
+                                   .Select(st => st.Trabajador);
+        
         // Relaciones - Citas/reservas de este servicio
         [Display(Name = "Reservas")]
         public ICollection<Reserva>? Reservas { get; set; }

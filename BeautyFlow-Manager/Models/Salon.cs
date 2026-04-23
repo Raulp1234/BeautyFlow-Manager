@@ -57,5 +57,11 @@ namespace BeautyFlow_Manager.Models
         
         // Relación con suscripción actual (navegación directa)
         public SalonSuscripcion? SuscripcionActual { get; set; }
+        
+        // Propiedad de navegación para acceder a las suscripciones históricas
+        [NotMapped]
+        [Display(Name = "Suscripciones")]
+        public IEnumerable<SalonSuscripcion>? Suscripciones => 
+            new[] { SuscripcionActual }.Where(s => s != null);
     }
 }
