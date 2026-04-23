@@ -66,11 +66,11 @@ namespace BeautyFlow_Manager.Data
                       .HasForeignKey(e => e.UsuarioId)
                       .OnDelete(DeleteBehavior.Cascade);
                       
-                // Relación con contrato actual
+                // Relación con contrato actual - Usar Restrict para evitar cascade paths
                 entity.HasOne(e => e.ContratoActual)
                       .WithMany()
                       .HasForeignKey(e => e.ContratoActualId)
-                      .OnDelete(DeleteBehavior.SetNull);
+                      .OnDelete(DeleteBehavior.Restrict);
             });
             
             // Configurar SolicitudContrato
