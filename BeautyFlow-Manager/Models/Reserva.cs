@@ -106,6 +106,15 @@ namespace BeautyFlow_Manager.Models
         [NotMapped]
         [Display(Name = "Trabajador")]
         public string? TrabajadorNombre => Trabajador?.NombreCompleto;
+        
+        // Alias para compatibilidad con vistas
+        [NotMapped]
+        [Display(Name = "Fecha de Reserva")]
+        public DateTime FechaReserva => FechaCreacion;
+        
+        [NotMapped]
+        [Display(Name = "Nota")]
+        public string? Nota => NotasCliente;
     }
     
     public enum EstadoReserva
