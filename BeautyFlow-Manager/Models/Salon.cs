@@ -12,6 +12,10 @@ namespace BeautyFlow_Manager.Models
         [StringLength(100, ErrorMessage = "El nombre no puede exceder los 100 caracteres")]
         public string NombreSalon { get; set; } = string.Empty;
         
+        // Propiedad alias para compatibilidad con vistas que usan "Nombre"
+        [NotMapped]
+        public string Nombre => NombreSalon;
+        
         [Required(ErrorMessage = "El NIT/RUC es requerido")]
         [Display(Name = "NIT/RUC")]
         [StringLength(20, ErrorMessage = "El NIT/RUC no puede exceder los 20 caracteres")]
